@@ -2,6 +2,9 @@
 
 ## Commands
 
+### Scaffold
+TODO
+
 ### migrate:status
 
 Returns a table with:
