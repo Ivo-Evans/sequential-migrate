@@ -1,5 +1,4 @@
 import { ConfigurationFile, RuntimeConfiguration } from '../types'
-import path from "path"
 import dynamicRequire from "./dynamicRequire"
 
 const DEFAULT_CONFIG: RuntimeConfiguration = {
