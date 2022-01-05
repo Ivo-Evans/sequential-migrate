@@ -25,7 +25,7 @@ const down = async () => {
     const newState = state.filter(
       (stateItem) => stateItem.name !== migrationData.name
     )
-    await stateInterface.set(state)
+    await stateInterface.set(newState)
   }
 }
 
