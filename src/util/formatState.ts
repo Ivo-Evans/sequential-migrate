@@ -1,27 +1,4 @@
-import { StateItem, State, MIGRATION_STATUS, FormattedState } from '../types'
-
-interface TypeCounts {
-  [index: string]: number
-}
-
-
-const determineMigrationStatus = (
-  doesMigrationExistInState: boolean,
-  typeCounts: TypeCounts
-) => {
-  if (
-    !doesMigrationExistInState &&
-    typeCounts[MIGRATION_STATUS.PENDING] &&
-    typeCounts[MIGRATION_STATUS.RAN]
-  ) {
-    return MIGRATION_STATUS.SKIPPED
-  } else if (!doesMigrationExistInState) {
-    return MIGRATION_STATUS.PENDING
-  } else {
-    return MIGRATION_STATUS.RAN
-  }
-}
-
+import { StateItem, State, MIGRATION_STATUS, FormattedState } from "../types";
 
 const formatState = (
   migrationNames: string[],
@@ -29,45 +6,52 @@ const formatState = (
 ): FormattedState => {
   const stateDictionary = state.reduce(
     (acc: Record<string, StateItem>, stateItem: StateItem) => {
-      acc[stateItem.name] = stateItem
-      return acc
+      acc[stateItem.name] = stateItem;
+      return acc;
     },
     {}
-  )
+  );
 
-  const typeCounts: TypeCounts = {}
+  let hasARunMigrationBeenEncountered = false;
+  const formattedMigrations = migrationNames
+    .sort((a, b) => b.localeCompare(a)) // reverse the list (also we can't guarantee it arrived sorted)
+    .map((migrationName: string) => {
+      const stateEntry = stateDictionary[migrationName];
 
-  const formattedMigrations = migrationNames.map((migrationName: string) => {
-    const stateEntry = stateDictionary[migrationName]
+      const status = stateEntry
+        ? MIGRATION_STATUS.RAN
+        : hasARunMigrationBeenEncountered
+        ? MIGRATION_STATUS.SKIPPED
+        : MIGRATION_STATUS.PENDING;
+      // the array has been reversed, so if a later one (that we've already iterated) was run, but this one isn't in state, this one must have been skipped. If the migration is in state, it must have been run. And if it's not in state, but no later migration is in state, it is just pending.
 
-    const status = determineMigrationStatus(!!stateEntry, typeCounts)
+      if (status === MIGRATION_STATUS.RAN) {
+        hasARunMigrationBeenEncountered = true;
+      }
 
-    typeCounts[status] = (typeCounts[status] || 0) + 1
+      const formattedMigration = stateEntry
+        ? { ...stateEntry, status }
+        : { name: migrationName, description: "", runAt: null, status };
 
-    const formattedMigration = stateEntry
-      ? { ...stateEntry, status }
-      : { name: migrationName, description: '', runAt: null, status }
+      if (stateEntry) {
+        delete stateDictionary[migrationName];
+      }
 
-    if (!stateEntry) {
-      delete stateDictionary[migrationName]
-    }
-
-    return formattedMigration
-  })
+      return formattedMigration;
+    });
 
   const formattedMissingEntries = Object.values(stateDictionary).map(
     (stateEntry) => {
-      return { ...stateEntry, status: MIGRATION_STATUS.MISSING }
+      return { ...stateEntry, status: MIGRATION_STATUS.MISSING };
     }
-  )
+  );
 
   const sortedAndFormattedState = [
     ...formattedMigrations,
     ...formattedMissingEntries,
-  ].sort((a, b) => a.name.localeCompare(b.name))
+  ].sort((a, b) => a.name.localeCompare(b.name));
 
-  return sortedAndFormattedState
-}
+  return sortedAndFormattedState;
+};
 
-export default formatState
-
+export default formatState;
