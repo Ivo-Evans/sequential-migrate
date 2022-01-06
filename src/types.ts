@@ -18,11 +18,11 @@ export enum MIGRATION_STATUS {
 export interface StateItem {
   name: string;
   description: string; // todo
-  runAt: number | null;
+  runAt: number;
 }
 
 export interface FormattedStateItem extends StateItem {
-  status: MIGRATION_STATUS
+  status: MIGRATION_STATUS;
 }
 
 export type State = StateItem[]

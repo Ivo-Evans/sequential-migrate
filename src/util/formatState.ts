@@ -31,7 +31,7 @@ const formatState = (
 
       const formattedMigration = stateEntry
         ? { ...stateEntry, status }
-        : { name: migrationName, description: "", runAt: null, status };
+        : { name: migrationName, description: "", runAt: 0, status };
 
       if (stateEntry) {
         delete stateDictionary[migrationName];
