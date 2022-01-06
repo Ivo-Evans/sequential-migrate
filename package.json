@@ -4,7 +4,7 @@
   "description": "Run scripts sequentially, and store a record of the scripts run",
   "main": "bin/status.js",
   "bin": {
-    "migrate": "build/index.js"
+    "sequential-migrate": "build/index.js"
   },
   "scripts": {
     "dev": "npm run build && npm link && chmod +x build/index.js && migrate",
