@@ -41,9 +41,9 @@ module.exports = {
 ```
 .
 ├── migrations
-│   ├── 01
-│   │   └── index.js
-│   └── 02.js
+│ ├── 01
+│ │ └── index.js
+│ └── 02.js
 ```
 
 When running `migrate:up`, first, the migration in 01/index.js will be run, and then the migration in 02.js will be run.

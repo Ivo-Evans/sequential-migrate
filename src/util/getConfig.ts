@@ -9,7 +9,6 @@ const DEFAULT_CONFIG: RuntimeConfiguration = {
 
 const getConfig = (): RuntimeConfiguration => {
   try {
-    console.log(process.cwd())
     const config: ConfigurationFile = dynamicRequire('.migrationrc.js')
     return { ...DEFAULT_CONFIG, ...config }
   } catch (e) {
