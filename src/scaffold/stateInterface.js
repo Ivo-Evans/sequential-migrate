@@ -1,13 +1,14 @@
 /* A state item must conform to the StateItem interface - see docs */
 
+// this function shows state to the sequential-migrate cli
 const get = async () => {
-  const stateItems = [] // perform your own logic to get state
-  return stateItems
+  const state = [] 
+  return state
 }
 
-const set = async (stateItem) => {
-  const existingStateItems = await get()
-  // perform your own logic to set state items, and then insert the entire State
+// this function receives the new state from the sequential-migrate cli for you to save wherever you like
+const set = async (state) => {
+  return null
 }
 
 module.exports = { get, set }

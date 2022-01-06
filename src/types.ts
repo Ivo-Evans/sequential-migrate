@@ -30,7 +30,7 @@ export type FormattedState = FormattedStateItem[]
 
 export interface StateInterface {
   get: () => Promise<State>;
-  set: (stateItem: StateItem) => Promise<unknown>;
+  set: (state: State) => Promise<unknown>;
 }
 
 /** A path to a file */
