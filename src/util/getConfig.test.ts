@@ -1,0 +1,54 @@
+import * as dynamicRequire from "./dynamicRequire"
+import getConfig, { DEFAULT_CONFIG } from "./getConfig"
+import { RuntimeConfiguration } from "../types"
+
+jest.mock("./dynamicRequire", () => ({
+  __esModule: true,
+  default: jest.fn(),
+}));
+
+describe("getConfig", () => {
+  it("Loads the default config if no file is found", () => {
+    // @ts-ignore
+    dynamicRequire.default = () => {
+      throw new Error("")
+    }
+    const config = getConfig()
+
+    expect(config).toMatchObject(DEFAULT_CONFIG)
+  });
+
+  it("Takes all values from the config file if possible", () => {
+
+    const fileConfig: RuntimeConfiguration = {
+      migrations: 'm',
+      newMigrationBuilder: 'n',
+      stateInterface: 's',
+    } 
+
+    // @ts-ignore
+    dynamicRequire.default = () => fileConfig
+
+    const config = getConfig()
+
+    expect(config).toMatchObject(fileConfig)
+  });
+
+  it("Merges the config file with the default config to create a complete config if necessary", () => {
+    const fileConfig: Partial<RuntimeConfiguration> = {
+      migrations: 'm',
+      newMigrationBuilder: 'n',
+    } 
+
+    // @ts-ignore
+    dynamicRequire.default = () => fileConfig
+
+    const config = getConfig()
+
+    expect(config).toMatchObject({
+      migrations: 'm',
+      newMigrationBuilder: 'n',
+      stateInterface: DEFAULT_CONFIG.stateInterface
+    })
+  });
+});

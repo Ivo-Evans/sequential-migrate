@@ -1,7 +1,7 @@
 import { ConfigurationFile, RuntimeConfiguration } from '../types'
 import dynamicRequire from "./dynamicRequire"
 
-const DEFAULT_CONFIG: RuntimeConfiguration = {
+export const DEFAULT_CONFIG: RuntimeConfiguration = {
   migrations: 'migration/migrations',
   newMigrationBuilder: 'migration/newMigrationBuilder',
   stateInterface: 'migration/stateInterface',
