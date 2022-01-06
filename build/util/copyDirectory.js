@@ -7,10 +7,10 @@ const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const copyDirectory = (src, dest) => {
     fs_1.default.mkdirSync(dest, { recursive: true });
-    let entries = fs_1.default.readdirSync(src, { withFileTypes: true });
-    for (let entry of entries) {
-        let srcPath = path_1.default.join(src, entry.name);
-        let destPath = path_1.default.join(dest, entry.name);
+    const entries = fs_1.default.readdirSync(src, { withFileTypes: true });
+    for (const entry of entries) {
+        const srcPath = path_1.default.join(src, entry.name);
+        const destPath = path_1.default.join(dest, entry.name);
         entry.isDirectory()
             ? copyDirectory(srcPath, destPath)
             : fs_1.default.copyFileSync(srcPath, destPath);

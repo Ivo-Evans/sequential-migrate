@@ -11,7 +11,6 @@ const DEFAULT_CONFIG = {
 };
 const getConfig = () => {
     try {
-        console.log(process.cwd());
         const config = (0, dynamicRequire_1.default)('.migrationrc.js');
         return Object.assign(Object.assign({}, DEFAULT_CONFIG), config);
     }

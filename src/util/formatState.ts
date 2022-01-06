@@ -19,13 +19,13 @@ const formatState = (
       const stateEntry = stateDictionary[migrationName];
 
       const status = stateEntry
-        ? MIGRATION_STATUS.RAN
+        ? MIGRATION_STATUS.RUN
         : hasARunMigrationBeenEncountered
         ? MIGRATION_STATUS.SKIPPED
         : MIGRATION_STATUS.PENDING;
       // the array has been reversed, so if a later one (that we've already iterated) was run, but this one isn't in state, this one must have been skipped. If the migration is in state, it must have been run. And if it's not in state, but no later migration is in state, it is just pending.
 
-      if (status === MIGRATION_STATUS.RAN) {
+      if (status === MIGRATION_STATUS.RUN) {
         hasARunMigrationBeenEncountered = true;
       }
 

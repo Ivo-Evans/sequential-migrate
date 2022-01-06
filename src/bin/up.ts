@@ -7,7 +7,7 @@ const up = async () => {
   const config = getConfig()
   const formattedState = await getFormattedState()
   const migrationsNotYetRun = formattedState.filter((state) =>
-    [MIGRATION_STATUS.RAN, MIGRATION_STATUS.MISSING].includes(state.status)
+    [MIGRATION_STATUS.RUN, MIGRATION_STATUS.MISSING].includes(state.status)
   )
   const stateInterface = dynamicRequire(config.stateInterface)
 

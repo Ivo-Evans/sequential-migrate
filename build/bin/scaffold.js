@@ -14,5 +14,6 @@ const scaffold = () => {
         return;
     }
     (0, copyDirectory_1.default)(path_1.default.join(__dirname, '..', 'scaffold'), folderPath);
+    fs_1.default.mkdirSync(path_1.default.join(folderPath, 'migrations'));
 };
 exports.default = scaffold;

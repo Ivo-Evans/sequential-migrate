@@ -19,7 +19,7 @@ const getFormattedState_1 = __importDefault(require("../util/getFormattedState")
 const up = () => __awaiter(void 0, void 0, void 0, function* () {
     const config = (0, getConfig_1.default)();
     const formattedState = yield (0, getFormattedState_1.default)();
-    const migrationsNotYetRun = formattedState.filter((state) => [types_1.MIGRATION_STATUS.RAN, types_1.MIGRATION_STATUS.MISSING].includes(state.status));
+    const migrationsNotYetRun = formattedState.filter((state) => [types_1.MIGRATION_STATUS.RUN, types_1.MIGRATION_STATUS.MISSING].includes(state.status));
     const stateInterface = (0, dynamicRequire_1.default)(config.stateInterface);
     for (let i = 0; i <= migrationsNotYetRun.length; i++) {
         const migrationData = migrationsNotYetRun[i];

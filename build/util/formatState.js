@@ -1,32 +1,28 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const types_1 = require("../types");
-const determineMigrationStatus = (doesMigrationExistInState, typeCounts) => {
-    if (!doesMigrationExistInState &&
-        typeCounts[types_1.MIGRATION_STATUS.PENDING] &&
-        typeCounts[types_1.MIGRATION_STATUS.RAN]) {
-        return types_1.MIGRATION_STATUS.SKIPPED;
-    }
-    else if (!doesMigrationExistInState) {
-        return types_1.MIGRATION_STATUS.PENDING;
-    }
-    else {
-        return types_1.MIGRATION_STATUS.RAN;
-    }
-};
 const formatState = (migrationNames, state) => {
     const stateDictionary = state.reduce((acc, stateItem) => {
         acc[stateItem.name] = stateItem;
         return acc;
     }, {});
-    const typeCounts = {};
-    const formattedMigrations = migrationNames.map((migrationName) => {
+    let hasARunMigrationBeenEncountered = false;
+    const formattedMigrations = migrationNames
+        .sort((a, b) => b.localeCompare(a)) // reverse the list (also we can't guarantee it arrived sorted)
+        .map((migrationName) => {
         const stateEntry = stateDictionary[migrationName];
-        const status = determineMigrationStatus(!!stateEntry, typeCounts);
-        typeCounts[status] = (typeCounts[status] || 0) + 1;
+        const status = stateEntry
+            ? types_1.MIGRATION_STATUS.RUN
+            : hasARunMigrationBeenEncountered
+                ? types_1.MIGRATION_STATUS.SKIPPED
+                : types_1.MIGRATION_STATUS.PENDING;
+        // the array has been reversed, so if a later one (that we've already iterated) was run, but this one isn't in state, this one must have been skipped. If the migration is in state, it must have been run. And if it's not in state, but no later migration is in state, it is just pending.
+        if (status === types_1.MIGRATION_STATUS.RUN) {
+            hasARunMigrationBeenEncountered = true;
+        }
         const formattedMigration = stateEntry
-            ? Object.assign(Object.assign({}, stateEntry), { status }) : { name: migrationName, description: '', runAt: null, status };
-        if (!stateEntry) {
+            ? Object.assign(Object.assign({}, stateEntry), { status }) : { name: migrationName, description: "", runAt: null, status };
+        if (stateEntry) {
             delete stateDictionary[migrationName];
         }
         return formattedMigration;

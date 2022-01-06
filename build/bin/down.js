@@ -27,7 +27,7 @@ const down = () => __awaiter(void 0, void 0, void 0, function* () {
         yield migrationScript.down();
         const state = yield stateInterface.get();
         const newState = state.filter((stateItem) => stateItem.name !== migrationData.name);
-        yield stateInterface.set(state);
+        yield stateInterface.set(newState);
     }
 });
 exports.default = down;

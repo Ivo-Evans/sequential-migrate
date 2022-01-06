@@ -12,13 +12,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const fs_1 = __importDefault(require("fs"));
+const path_1 = __importDefault(require("path"));
 const getConfig_1 = __importDefault(require("../util/getConfig"));
-const getFolderContentsAlphabetised_1 = __importDefault(require("../util/getFolderContentsAlphabetised"));
 const getState_1 = __importDefault(require("../util/getState"));
 const formatState_1 = __importDefault(require("../util/formatState"));
 const getFormattedState = () => __awaiter(void 0, void 0, void 0, function* () {
     const config = (0, getConfig_1.default)();
-    const migrationNames = (0, getFolderContentsAlphabetised_1.default)(config.migrations);
+    const migrationNames = fs_1.default.readdirSync(path_1.default.join(process.cwd(), config.migrations));
     const state = yield (0, getState_1.default)(config.stateInterface);
     const formattedState = (0, formatState_1.default)(migrationNames, state);
     return formattedState;
