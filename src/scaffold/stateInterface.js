@@ -1,4 +1,4 @@
 module.exports = {
-  get: async () => {},
+  get: async () => ([]),
   set: async () => {},
 }
