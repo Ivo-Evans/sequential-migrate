@@ -1,10 +1,10 @@
-import { StateModifier } from "../types";
+import { StateModifier, MigrationScript } from "../types";
 import dynamicRequire from "./dynamicRequire";
 
-const runMigration: StateModifier = async (stateItem, stateInterface) => {
-  const migrationScript = dynamicRequire(stateItem.name);
+const runMigration: StateModifier = async (stateItem, stateScript) => {
+  const migrationScript: MigrationScript = dynamicRequire(stateItem.name);
   await migrationScript.up();
-  const state = await stateInterface.get();
+  const state = await stateScript.get();
   const newState = [
     ...state,
     {
@@ -13,7 +13,7 @@ const runMigration: StateModifier = async (stateItem, stateInterface) => {
       runAt: Date.now(),
     },
   ];
-  await stateInterface.set(newState);
+  await stateScript.set(newState);
 };
 
 export default runMigration;

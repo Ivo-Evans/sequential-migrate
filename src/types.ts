@@ -6,7 +6,7 @@ export enum COMMAND {
   DOWN = "down"
 }
 
-export interface Migration {
+export interface MigrationScript {
   description: string;
   up: () => Promise<unknown>;
   down: () => Promise<unknown>;
@@ -36,20 +36,20 @@ export interface InferredStateItem extends RecordedStateItem {
 export type RecordedState = RecordedStateItem[];
 export type InferredState = InferredStateItem[];
 
-export interface StateInterface {
+export interface StateScript {
   get: () => Promise<RecordedState>;
   set: (state: RecordedState) => Promise<unknown>;
 }
 
 export type migrationStateMachine = (
   inferredState: InferredState,
-  stateInterface: StateInterface,
+  stateScript: StateScript,
   to?: string
 ) => Promise<void>;
 
 export type StateModifier = (
   stateItem: RecordedStateItem,
-  stateInterface: StateInterface
+  stateScript: StateScript
 ) => Promise<void>;
 
 /** A path to a file */
@@ -63,8 +63,8 @@ export interface RuntimeConfiguration {
   migrations: FolderPath;
   /** Defaults to migration/newMigrationBuilder  */
   newMigrationBuilder: FilePath;
-  /** Defaults to migration/stateInterface */
-  stateInterface: FilePath;
+  /** Defaults to migration/stateScript */
+  stateScript: FilePath;
 }
 
 export type ConfigurationFile = Partial<RuntimeConfiguration>;

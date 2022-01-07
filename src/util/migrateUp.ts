@@ -3,7 +3,7 @@ import runMigration from "./runMigration";
 
 const migrateUp: migrationStateMachine = async (
   inferredState,
-  stateInterface,
+  stateScript,
   to
 ) => {
   loop: for (let i = 0; i < inferredState.length; i++) {
@@ -18,7 +18,7 @@ const migrateUp: migrationStateMachine = async (
         );
         break loop;
       case MIGRATION_STATUS.PENDING:
-        await runMigration(stateItem, stateInterface);
+        await runMigration(stateItem, stateScript);
         break;
       default:
         throw new Error(`Item at index ${i} of state has invalid status`);

@@ -3,7 +3,7 @@ import rollbackMigration from "./rollbackMigration";
 
 const migrateDown: migrationStateMachine = async (
   inferredState,
-  stateInterface,
+  stateScript,
   to
 ) => {
   loop: for (let i = inferredState.length - 1; i >= 0; i--) {
@@ -21,7 +21,7 @@ const migrateDown: migrationStateMachine = async (
         );
         break loop;
       case MIGRATION_STATUS.RUN:
-        await rollbackMigration(stateItem, stateInterface);
+        await rollbackMigration(stateItem, stateScript);
         break;
       default:
         throw new Error(`Item at index ${i} of state has an invalid status`);

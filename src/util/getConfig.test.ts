@@ -23,7 +23,7 @@ describe("getConfig", () => {
     const fileConfig: RuntimeConfiguration = {
       migrations: 'm',
       newMigrationBuilder: 'n',
-      stateInterface: 's',
+      stateScript: 's',
     } 
 
     // @ts-ignore
@@ -48,7 +48,7 @@ describe("getConfig", () => {
     expect(config).toMatchObject({
       migrations: 'm',
       newMigrationBuilder: 'n',
-      stateInterface: DEFAULT_CONFIG.stateInterface
+      stateScript: DEFAULT_CONFIG.stateScript
     })
   });
 });

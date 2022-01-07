@@ -6,9 +6,9 @@ import migrateDown from "../util/migrateDown";
 const down = async (to?: string) => {
   const config = getConfig();
   const inferredState = await getInferredState();
-  const stateInterface = dynamicRequire(config.stateInterface);
+  const stateScript = dynamicRequire(config.stateScript);
 
-  await migrateDown(inferredState, stateInterface, to);
+  await migrateDown(inferredState, stateScript, to);
 };
 
 export default down;

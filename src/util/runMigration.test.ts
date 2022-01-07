@@ -1,4 +1,4 @@
-import { StateInterface, RecordedStateItem, RecordedState } from "../types";
+import { StateScript, RecordedStateItem, RecordedState } from "../types";
 import runMigration from "./runMigration";
 import dynamicRequire from "./dynamicRequire";
 jest.mock("./dynamicRequire");
@@ -19,13 +19,13 @@ describe("Run migration", () => {
       runAt: 1,
     };
 
-    const stateInterface: StateInterface = {
+    const stateScript: StateScript = {
       get: jest.fn(async () => []),
 
       set: jest.fn(),
     };
 
-    await runMigration(stateItem, stateInterface);
+    await runMigration(stateItem, stateScript);
 
     expect(dynamicRequire).toHaveBeenCalledTimes(1);
     expect(dynamicRequire).toHaveBeenCalledWith(stateItem.name);
@@ -43,12 +43,12 @@ describe("Run migration", () => {
       runAt: 1,
     };
 
-    const stateInterface: StateInterface = {
+    const stateScript: StateScript = {
       get: jest.fn(async () => []),
       set: jest.fn(),
     };
 
-    await runMigration(stateItem, stateInterface);
+    await runMigration(stateItem, stateScript);
 
     expect(up).toHaveBeenCalledTimes(1);
   });
@@ -64,7 +64,7 @@ describe("Run migration", () => {
       },
     ];
     const set = jest.fn();
-    const stateInterface: StateInterface = {
+    const stateScript: StateScript = {
       get: jest.fn(async () => oldState),
       set,
     };
@@ -75,7 +75,7 @@ describe("Run migration", () => {
       runAt: 1,
     };
 
-    await runMigration(stateItem, stateInterface);
+    await runMigration(stateItem, stateScript);
 
     expect(set).toHaveBeenCalledTimes(1);
     expect(set).toHaveBeenLastCalledWith([

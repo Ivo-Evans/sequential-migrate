@@ -1,4 +1,4 @@
-import { StateInterface, RecordedStateItem, RecordedState } from "../types";
+import { StateScript, RecordedStateItem, RecordedState } from "../types";
 import rollbackMigration from "./rollbackMigration";
 import dynamicRequire from "./dynamicRequire";
 jest.mock("./dynamicRequire");
@@ -18,12 +18,12 @@ describe("rollbackMigration", () => {
       runAt: 1,
     };
 
-    const stateInterface: StateInterface = {
+    const stateScript: StateScript = {
       get: jest.fn(async () => []),
       set: jest.fn(),
     };
 
-    await rollbackMigration(stateItem, stateInterface);
+    await rollbackMigration(stateItem, stateScript);
 
     expect(dynamicRequire).toHaveBeenCalledTimes(1);
     expect(dynamicRequire).toHaveBeenCalledWith(stateItem.name);
@@ -41,12 +41,12 @@ describe("rollbackMigration", () => {
       runAt: 1,
     };
 
-    const stateInterface: StateInterface = {
+    const stateScript: StateScript = {
       get: jest.fn(async () => []),
       set: jest.fn(),
     };
 
-    await rollbackMigration(stateItem, stateInterface);
+    await rollbackMigration(stateItem, stateScript);
 
     expect(down).toHaveBeenCalledTimes(1);
   });
@@ -71,12 +71,12 @@ describe("rollbackMigration", () => {
     ];
 
     const set = jest.fn();
-    const stateInterface: StateInterface = {
+    const stateScript: StateScript = {
       get: jest.fn(async () => oldState),
       set,
     };
 
-    await rollbackMigration(oldState[0], stateInterface);
+    await rollbackMigration(oldState[0], stateScript);
 
     expect(set).toHaveBeenCalledTimes(1);
     expect(set).toHaveBeenLastCalledWith(oldState.slice(1, 3));

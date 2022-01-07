@@ -4,7 +4,7 @@ import dynamicRequire from "./dynamicRequire"
 export const DEFAULT_CONFIG: RuntimeConfiguration = {
   migrations: 'migration/migrations',
   newMigrationBuilder: 'migration/newMigrationBuilder',
-  stateInterface: 'migration/stateInterface',
+  stateScript: 'migration/stateScript',
 }
 
 const getConfig = (): RuntimeConfiguration => {

@@ -1,4 +1,4 @@
-import { InferredState, MIGRATION_STATUS, StateInterface } from "../types";
+import { InferredState, MIGRATION_STATUS, StateScript } from "../types";
 import migrateDown from "./migrateDown";
 import rollbackMigration from "./rollbackMigration";
 
@@ -7,7 +7,7 @@ const consoleSpy = jest.spyOn(console, "log").mockImplementation();
 jest.mock("./rollbackMigration");
 const mockedRollbackMigration = jest.mocked(rollbackMigration, true);
 
-const stateInterface: StateInterface = {
+const stateScript: StateScript = {
   get: jest.fn(),
   set: jest.fn(),
 };
@@ -36,7 +36,7 @@ describe("migrateDown", () => {
 
     let error;
     try {
-      await migrateDown(formattedState, stateInterface);
+      await migrateDown(formattedState, stateScript);
     } catch (e) {
       error = e;
     }
@@ -62,16 +62,16 @@ describe("migrateDown", () => {
       },
     ];
 
-    await migrateDown(formattedState, stateInterface);
+    await migrateDown(formattedState, stateScript);
 
     expect(rollbackMigration).toHaveBeenCalledTimes(2);
     expect(rollbackMigration).toHaveBeenCalledWith(
       formattedState[0],
-      stateInterface
+      stateScript
     );
     expect(rollbackMigration).toHaveBeenCalledWith(
       formattedState[1],
-      stateInterface
+      stateScript
     );
   });
 
@@ -103,24 +103,24 @@ describe("migrateDown", () => {
       },
     ];
 
-    await migrateDown(formattedState, stateInterface);
+    await migrateDown(formattedState, stateScript);
 
     expect(rollbackMigration).toHaveBeenCalledTimes(2);
     expect(rollbackMigration).toHaveBeenCalledWith(
       formattedState[0],
-      stateInterface
+      stateScript
     );
     expect(rollbackMigration).toHaveBeenCalledWith(
       formattedState[1],
-      stateInterface
+      stateScript
     );
     expect(rollbackMigration).not.toHaveBeenCalledWith(
       formattedState[2],
-      stateInterface
+      stateScript
     );
     expect(rollbackMigration).not.toHaveBeenCalledWith(
       formattedState[3],
-      stateInterface
+      stateScript
     );
   });
 
@@ -152,7 +152,7 @@ describe("migrateDown", () => {
       },
     ];
 
-    await migrateDown(formattedState, stateInterface);
+    await migrateDown(formattedState, stateScript);
 
     expect(mockedRollbackMigration).toHaveBeenCalledTimes(1);
     expect(console.log).toHaveBeenCalledTimes(1);
@@ -189,7 +189,7 @@ describe("migrateDown", () => {
       },
     ];
 
-    await migrateDown(formattedState, stateInterface);
+    await migrateDown(formattedState, stateScript);
 
     expect(mockedRollbackMigration).toHaveBeenCalledTimes(1);
     expect(console.log).toHaveBeenCalledTimes(1);
@@ -226,24 +226,24 @@ describe("migrateDown", () => {
       },
     ];
 
-    await migrateDown(formattedState, stateInterface, "b");
+    await migrateDown(formattedState, stateScript, "b");
 
     expect(rollbackMigration).toHaveBeenCalledTimes(2);
     expect(rollbackMigration).toHaveBeenCalledWith(
       formattedState[3],
-      stateInterface
+      stateScript
     );
     expect(rollbackMigration).toHaveBeenCalledWith(
       formattedState[2],
-      stateInterface
+      stateScript
     );
     expect(rollbackMigration).not.toHaveBeenCalledWith(
       formattedState[1],
-      stateInterface
+      stateScript
     );
     expect(rollbackMigration).not.toHaveBeenCalledWith(
       formattedState[0],
-      stateInterface
+      stateScript
     );
   });
 });

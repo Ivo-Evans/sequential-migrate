@@ -52,7 +52,7 @@ module.exports = {
 
 When running `migrate:up`, first, the migration in 01/index.js will be run, and then the migration in 02.js will be run.
 
-Each migration script should export an object which fits the `Migration` interface.
+Each migration script should export an object which fits the `MigrationAPI` interface.
 
 
 ### newMigrationBuilder
@@ -61,7 +61,7 @@ This is a file which should export a function `build`.
 
 `build` should take one argument, which is the name the user chooses for the new migration.
 
-`build` should create a file which follows the `Migration` interface.
+`build` should create a file which follows the `MigrationAPI` interface.
 
 
 ### stateInterface

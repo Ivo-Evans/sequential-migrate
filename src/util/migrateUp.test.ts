@@ -1,4 +1,4 @@
-import { InferredState, MIGRATION_STATUS, StateInterface } from "../types";
+import { InferredState, MIGRATION_STATUS, StateScript } from "../types";
 import migrateUp from "./migrateUp";
 import runMigration from "./runMigration";
 
@@ -7,7 +7,7 @@ const consoleSpy = jest.spyOn(console, "log").mockImplementation();
 jest.mock("./runMigration");
 const mockedRunMigration = jest.mocked(runMigration, true);
 
-const stateInterface: StateInterface = {
+const stateScript: StateScript = {
   get: jest.fn(),
   set: jest.fn(),
 };
@@ -36,7 +36,7 @@ describe("migrateUp", () => {
 
     let error;
     try {
-      await migrateUp(formattedState, stateInterface);
+      await migrateUp(formattedState, stateScript);
     } catch (e) {
       error = e;
     }
@@ -62,16 +62,16 @@ describe("migrateUp", () => {
       },
     ];
 
-    await migrateUp(formattedState, stateInterface);
+    await migrateUp(formattedState, stateScript);
 
     expect(runMigration).toHaveBeenCalledTimes(2);
     expect(runMigration).toHaveBeenCalledWith(
       formattedState[0],
-      stateInterface
+      stateScript
     );
     expect(runMigration).toHaveBeenCalledWith(
       formattedState[1],
-      stateInterface
+      stateScript
     );
   });
 
@@ -103,24 +103,24 @@ describe("migrateUp", () => {
       },
     ];
 
-    await migrateUp(formattedState, stateInterface);
+    await migrateUp(formattedState, stateScript);
 
     expect(runMigration).toHaveBeenCalledTimes(2);
     expect(runMigration).not.toHaveBeenCalledWith(
       formattedState[0],
-      stateInterface
+      stateScript
     );
     expect(runMigration).not.toHaveBeenLastCalledWith(
       formattedState[2],
-      stateInterface
+      stateScript
     );
     expect(runMigration).toHaveBeenCalledWith(
       formattedState[2],
-      stateInterface
+      stateScript
     );
     expect(runMigration).toHaveBeenCalledWith(
       formattedState[3],
-      stateInterface
+      stateScript
     );
   });
 
@@ -152,7 +152,7 @@ describe("migrateUp", () => {
       },
     ];
 
-    await migrateUp(formattedState, stateInterface);
+    await migrateUp(formattedState, stateScript);
 
     expect(mockedRunMigration).toHaveBeenCalledTimes(1);
     expect(console.log).toHaveBeenCalledTimes(1);
@@ -189,7 +189,7 @@ describe("migrateUp", () => {
       },
     ];
 
-    await migrateUp(formattedState, stateInterface);
+    await migrateUp(formattedState, stateScript);
 
     expect(mockedRunMigration).toHaveBeenCalledTimes(1);
     expect(console.log).toHaveBeenCalledTimes(1);
@@ -226,24 +226,24 @@ describe("migrateUp", () => {
       },
     ];
 
-    await migrateUp(formattedState, stateInterface, "c");
+    await migrateUp(formattedState, stateScript, "c");
 
     expect(runMigration).toHaveBeenCalledTimes(3);
     expect(runMigration).toHaveBeenCalledWith(
       formattedState[0],
-      stateInterface
+      stateScript
     );
     expect(runMigration).toHaveBeenCalledWith(
       formattedState[1],
-      stateInterface
+      stateScript
     );
     expect(runMigration).toHaveBeenCalledWith(
       formattedState[2],
-      stateInterface
+      stateScript
     );
     expect(runMigration).not.toHaveBeenCalledWith(
       formattedState[3],
-      stateInterface
+      stateScript
     );
   });
 });
