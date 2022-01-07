@@ -1,3 +1,11 @@
+export enum COMMAND {
+  SCAFFOLD = "scaffold",
+  STATUS = "status",
+  NEW = "new",
+  UP = "up",
+  DOWN = "down"
+}
+
 export interface Migration {
   description: string;
   up: () => Promise<unknown>;
