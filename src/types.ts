@@ -25,17 +25,26 @@ export interface FormattedStateItem extends StateItem {
   status: MIGRATION_STATUS;
 }
 
-export type State = StateItem[]
-export type FormattedState = FormattedStateItem[]
+export type State = StateItem[];
+export type FormattedState = FormattedStateItem[];
 
 export interface StateInterface {
   get: () => Promise<State>;
   set: (state: State) => Promise<unknown>;
 }
 
+export type StateModificationIterator = (
+  FormattedState: FormattedState,
+  stateInterface: StateInterface
+) => Promise<void>;
+
+export type StateModifier = (
+  stateItem: StateItem,
+  stateInterface: StateInterface
+) => Promise<void>;
+
 /** A path to a file */
 export type FilePath = string;
-
 
 /** A path to a folder */
 export type FolderPath = string;
@@ -49,4 +58,4 @@ export interface RuntimeConfiguration {
   stateInterface: FilePath;
 }
 
-export type ConfigurationFile = Partial<RuntimeConfiguration>
+export type ConfigurationFile = Partial<RuntimeConfiguration>;

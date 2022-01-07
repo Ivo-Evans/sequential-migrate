@@ -10,7 +10,7 @@
     "build": "rimraf ./build && tsc",
     "postbuild": "copyfiles -u 1 src/scaffold/* src/scaffold/**/* build",
     "docs": "typedoc src/types.ts",
-    "test": "jest"
+    "test": "jest --watch"
   },
   "author": "Ivo Evans",
   "license": "MIT",
