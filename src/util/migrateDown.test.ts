@@ -197,4 +197,53 @@ describe("up command", () => {
       "Stopped at b because it has status ❌ SKIPPED"
     );
   });
+
+  it("If there is a target migration, it migrates down to but not including the target", async () => {
+    const formattedState: FormattedState = [
+      {
+        status: MIGRATION_STATUS.RUN,
+        name: "a",
+        description: "",
+        runAt: 1,
+      },
+      {
+        status: MIGRATION_STATUS.RUN,
+        name: "b",
+        description: "",
+        runAt: 2,
+      },
+      {
+        status: MIGRATION_STATUS.RUN,
+        name: "c",
+        description: "",
+        runAt: 3,
+      },
+      {
+        status: MIGRATION_STATUS.RUN,
+        name: "d",
+        description: "",
+        runAt: 4,
+      },
+    ];
+
+    await migrateDown(formattedState, stateInterface, "b");
+
+    expect(rollbackMigration).toHaveBeenCalledTimes(2);
+    expect(rollbackMigration).toHaveBeenCalledWith(
+      formattedState[3],
+      stateInterface
+    );
+    expect(rollbackMigration).toHaveBeenCalledWith(
+      formattedState[2],
+      stateInterface
+    );
+    expect(rollbackMigration).not.toHaveBeenCalledWith(
+      formattedState[1],
+      stateInterface
+    );
+    expect(rollbackMigration).not.toHaveBeenCalledWith(
+      formattedState[0],
+      stateInterface
+    );
+  });
 });

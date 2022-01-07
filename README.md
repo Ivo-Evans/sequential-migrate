@@ -21,7 +21,11 @@ Returns a table with:
 
 ### migrate:up
 
+You can run `migrate up` to migrate to the most recent migration. You can also provide a specific migration name, e.g. `migrate up 1641484872787-foo`. This will run all pending migrations up to and including `1641484872787-foo`
+
 ### migrate:down
+
+You can run `migrate down` to rollback all migrations. You can also provide a specific migration name, e.g. `migrate down 1641484872787-foo`. This will roll back all run migrations up to but not including `1641484872787-foo`.
 
 ## Configuration
 

@@ -197,4 +197,53 @@ describe("up command", () => {
       "Stopped at b because it has status ❌ SKIPPED"
     );
   });
+
+  it("If there is a target migration, it migrates up and including the target", async () => {
+    const formattedState: FormattedState = [
+      {
+        status: MIGRATION_STATUS.PENDING,
+        name: "a",
+        description: "",
+        runAt: 1,
+      },
+      {
+        status: MIGRATION_STATUS.PENDING,
+        name: "b",
+        description: "",
+        runAt: 2,
+      },
+      {
+        status: MIGRATION_STATUS.PENDING,
+        name: "c",
+        description: "",
+        runAt: 3,
+      },
+      {
+        status: MIGRATION_STATUS.PENDING,
+        name: "d",
+        description: "",
+        runAt: 4,
+      },
+    ];
+
+    await migrateUp(formattedState, stateInterface, "c");
+
+    expect(runMigration).toHaveBeenCalledTimes(3);
+    expect(runMigration).toHaveBeenCalledWith(
+      formattedState[0],
+      stateInterface
+    );
+    expect(runMigration).toHaveBeenCalledWith(
+      formattedState[1],
+      stateInterface
+    );
+    expect(runMigration).toHaveBeenCalledWith(
+      formattedState[2],
+      stateInterface
+    );
+    expect(runMigration).not.toHaveBeenCalledWith(
+      formattedState[3],
+      stateInterface
+    );
+  });
 });

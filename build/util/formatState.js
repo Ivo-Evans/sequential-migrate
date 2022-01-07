@@ -21,7 +21,7 @@ const formatState = (migrationNames, state) => {
             hasARunMigrationBeenEncountered = true;
         }
         const formattedMigration = stateEntry
-            ? Object.assign(Object.assign({}, stateEntry), { status }) : { name: migrationName, description: "", runAt: null, status };
+            ? Object.assign(Object.assign({}, stateEntry), { status }) : { name: migrationName, description: "", runAt: 0, status };
         if (stateEntry) {
             delete stateDictionary[migrationName];
         }

@@ -12,15 +12,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const dynamicRequire_1 = __importDefault(require("../util/dynamicRequire"));
-const getConfig_1 = __importDefault(require("../util/getConfig"));
-const getFormattedState_1 = __importDefault(require("../util/getFormattedState"));
-const migrateUp_1 = __importDefault(require("../util/migrateUp"));
-const up = (to) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("🍍   to", to);
-    const config = (0, getConfig_1.default)();
-    const formattedState = yield (0, getFormattedState_1.default)();
-    const stateInterface = (0, dynamicRequire_1.default)(config.stateInterface);
-    yield (0, migrateUp_1.default)(formattedState, stateInterface, to);
+const dynamicRequire_1 = __importDefault(require("./dynamicRequire"));
+const rollbackMigration = (stateItem, stateInterface) => __awaiter(void 0, void 0, void 0, function* () {
+    const migrationScript = (0, dynamicRequire_1.default)(stateItem.name);
+    yield migrationScript.down();
+    const state = yield stateInterface.get();
+    const newState = state.filter(({ name }) => name !== stateItem.name);
+    yield stateInterface.set(newState);
 });
-exports.default = up;
+exports.default = rollbackMigration;

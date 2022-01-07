@@ -3,7 +3,8 @@ import runMigration from "./runMigration";
 
 const migrateUp: StateModificationIterator = async (
   formattedState,
-  stateInterface
+  stateInterface,
+  to
 ) => {
   loop: for (let i = 0; i < formattedState.length; i++) {
     const stateItem = formattedState[i];
@@ -22,6 +23,10 @@ const migrateUp: StateModificationIterator = async (
       default:
         throw new Error(`Item at index ${i} of state has invalid status`);
     }
+    if (stateItem.name === to) {
+      break;
+    }
+
   }
 };
 

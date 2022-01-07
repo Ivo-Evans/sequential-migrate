@@ -43,7 +43,8 @@ export interface StateInterface {
 
 export type StateModificationIterator = (
   FormattedState: FormattedState,
-  stateInterface: StateInterface
+  stateInterface: StateInterface,
+  to?: string
 ) => Promise<void>;
 
 export type StateModifier = (

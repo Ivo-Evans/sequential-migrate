@@ -1,23 +1,25 @@
 #! /usr/bin/env node
 
-import { COMMAND } from "./types"
-import scaffold from './bin/scaffold'
-import getStatus from './bin/getStatus'
-import newMigration from './bin/newMigration'
-import up from './bin/up'
-import down from './bin/down'
+import { COMMAND } from "./types";
+import scaffold from "./bin/scaffold";
+import getStatus from "./bin/getStatus";
+import newMigration from "./bin/newMigration";
+import up from "./bin/up";
+import down from "./bin/down";
 
-const { argv } = process
+const { argv } = process;
 
 if (argv.includes(COMMAND.SCAFFOLD)) {
-  scaffold()
+  scaffold();
 } else if (argv.includes(COMMAND.STATUS)) {
-  getStatus()
+  getStatus();
 } else if (argv.includes(COMMAND.NEW)) {
-  const name = argv[argv.indexOf(COMMAND.NEW) + 1]
-  newMigration(name)
+  const name = argv[argv.indexOf(COMMAND.NEW) + 1];
+  newMigration(name);
 } else if (argv.includes(COMMAND.UP)) {
-  up()
+  const to = argv[argv.indexOf(COMMAND.UP) + 1];
+  up(to);
 } else if (argv.includes(COMMAND.DOWN)) {
-  down()
+  const to = argv[argv.indexOf(COMMAND.UP) + 1];
+  down(to);
 }

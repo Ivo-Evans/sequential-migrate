@@ -3,10 +3,14 @@ import rollbackMigration from "./rollbackMigration";
 
 const migrateDown: StateModificationIterator = async (
   formattedState,
-  stateInterface
+  stateInterface,
+  to
 ) => {
   loop: for (let i = formattedState.length - 1; i >= 0; i--) {
     const stateItem = formattedState[i];
+    if (stateItem.name === to) {
+      break;
+    }
     switch (stateItem.status) {
       case MIGRATION_STATUS.PENDING:
         continue;
