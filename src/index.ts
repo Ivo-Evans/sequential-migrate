@@ -14,7 +14,8 @@ if (argv.includes(COMMAND.SCAFFOLD)) {
 } else if (argv.includes(COMMAND.STATUS)) {
   getStatus()
 } else if (argv.includes(COMMAND.NEW)) {
-  newMigration()
+  const name = argv[argv.indexOf(COMMAND.NEW) + 1]
+  newMigration(name)
 } else if (argv.includes(COMMAND.UP)) {
   up()
 } else if (argv.includes(COMMAND.DOWN)) {
