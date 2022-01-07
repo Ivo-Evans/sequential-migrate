@@ -1,4 +1,4 @@
-import { StateInterface, StateItem, State } from "../types";
+import { StateInterface, RecordedStateItem, RecordedState } from "../types";
 import rollbackMigration from "./rollbackMigration";
 import dynamicRequire from "./dynamicRequire";
 jest.mock("./dynamicRequire");
@@ -12,7 +12,7 @@ describe("rollbackMigration", () => {
     }));
   });
   it("requires the migration by its name", async () => {
-    const stateItem: StateItem = {
+    const stateItem: RecordedStateItem = {
       name: "a",
       description: "",
       runAt: 1,
@@ -35,7 +35,7 @@ describe("rollbackMigration", () => {
       down,
     }));
 
-    const stateItem: StateItem = {
+    const stateItem: RecordedStateItem = {
       name: "a",
       description: "",
       runAt: 1,
@@ -52,7 +52,7 @@ describe("rollbackMigration", () => {
   });
 
   it("calls the state interface's 'set' method with the new state", async () => {
-    const oldState: State = [
+    const oldState: RecordedState = [
       {
         name: "a",
         description: "b",

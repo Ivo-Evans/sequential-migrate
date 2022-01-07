@@ -1,4 +1,4 @@
-import { FormattedState, MIGRATION_STATUS, StateInterface } from "../types";
+import { InferredState, MIGRATION_STATUS, StateInterface } from "../types";
 import migrateDown from "./migrateDown";
 import rollbackMigration from "./rollbackMigration";
 
@@ -12,14 +12,14 @@ const stateInterface: StateInterface = {
   set: jest.fn(),
 };
 
-describe("up command", () => {
+describe("migrateDown", () => {
   afterEach(() => {
     mockedRollbackMigration.mockClear();
     consoleSpy.mockClear();
   });
 
   it("Does nothing when provided with entirely pending migrations", async () => {
-    const formattedState: FormattedState = [
+    const formattedState: InferredState = [
       {
         status: MIGRATION_STATUS.PENDING,
         name: "a",
@@ -47,7 +47,7 @@ describe("up command", () => {
   });
 
   it("Rolls back every migration in a set of run migrations", async () => {
-    const formattedState: FormattedState = [
+    const formattedState: InferredState = [
       {
         status: MIGRATION_STATUS.RUN,
         name: "a",
@@ -76,7 +76,7 @@ describe("up command", () => {
   });
 
   it("Rolls back only the run migrations in a set of run migrations followed by pending migrations", async () => {
-    const formattedState: FormattedState = [
+    const formattedState: InferredState = [
       {
         status: MIGRATION_STATUS.RUN,
         name: "a",
@@ -125,7 +125,7 @@ describe("up command", () => {
   });
 
   it("Aborts when it encounters a missing migration", async () => {
-    const formattedState: FormattedState = [
+    const formattedState: InferredState = [
       {
         status: MIGRATION_STATUS.PENDING,
         name: "a",
@@ -162,7 +162,7 @@ describe("up command", () => {
   });
 
   it("Aborts when it encounters a skipped migration", async () => {
-    const formattedState: FormattedState = [
+    const formattedState: InferredState = [
       {
         status: MIGRATION_STATUS.PENDING,
         name: "a",
@@ -199,7 +199,7 @@ describe("up command", () => {
   });
 
   it("If there is a target migration, it migrates down to but not including the target", async () => {
-    const formattedState: FormattedState = [
+    const formattedState: InferredState = [
       {
         status: MIGRATION_STATUS.RUN,
         name: "a",

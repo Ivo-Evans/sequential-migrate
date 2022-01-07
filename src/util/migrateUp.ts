@@ -1,13 +1,13 @@
-import { MIGRATION_STATUS, StateModificationIterator } from "../types";
+import { MIGRATION_STATUS, migrationStateMachine } from "../types";
 import runMigration from "./runMigration";
 
-const migrateUp: StateModificationIterator = async (
-  formattedState,
+const migrateUp: migrationStateMachine = async (
+  inferredState,
   stateInterface,
   to
 ) => {
-  loop: for (let i = 0; i < formattedState.length; i++) {
-    const stateItem = formattedState[i];
+  loop: for (let i = 0; i < inferredState.length; i++) {
+    const stateItem = inferredState[i];
     switch (stateItem.status) {
       case MIGRATION_STATUS.RUN:
         continue;

@@ -1,5 +1,5 @@
-import { MIGRATION_STATUS, State } from "../types";
-import formatState from "./formatState";
+import { MIGRATION_STATUS, RecordedState } from "../types";
+import inferState from "./inferState";
 
 describe("formatState", () => {
   it("Combines state and migrations into an alphabetically sorted list without overlap", () => {
@@ -17,7 +17,7 @@ describe("formatState", () => {
       },
     ];
 
-    const formattedState = formatState(migrationNames, state);
+    const formattedState = inferState(migrationNames, state);
 
     expect(formattedState).toMatchObject([
       {
@@ -34,8 +34,8 @@ describe("formatState", () => {
 
   it("Displays the status of a list of migrations that have not been run", () => {
     const migrationNames = ["a", "b"];
-    const state: State = [];
-    const formattedState = formatState(migrationNames, state);
+    const state: RecordedState = [];
+    const formattedState = inferState(migrationNames, state);
 
     const isEveryStateItemPending = formattedState.every(
       (stateItem) => stateItem.status === MIGRATION_STATUS.PENDING
@@ -46,7 +46,7 @@ describe("formatState", () => {
 
   it("Displays a list of migrations that have been run correctly", () => {
     const migrationNames = ["a", "b"];
-    const state: State = [
+    const state: RecordedState = [
       {
         name: "a",
         description: "",
@@ -58,7 +58,7 @@ describe("formatState", () => {
         runAt: 3,
       },
     ];
-    const formattedState = formatState(migrationNames, state);
+    const formattedState = inferState(migrationNames, state);
 
     const isEveryStateItemRun = formattedState.every(
       (stateItem) => stateItem.status === MIGRATION_STATUS.RUN
@@ -69,7 +69,7 @@ describe("formatState", () => {
 
   it("Correctly detects the point at which the last migration was run in a valid list of migrations", () => {
     const migrationNames = ["a", "b", "c"];
-    const state: State = [
+    const state: RecordedState = [
       {
         name: "a",
         description: "",
@@ -81,7 +81,7 @@ describe("formatState", () => {
         runAt: 3,
       },
     ];
-    const formattedState = formatState(migrationNames, state);
+    const formattedState = inferState(migrationNames, state);
 
     expect(formattedState).toMatchObject([
       {
@@ -101,7 +101,7 @@ describe("formatState", () => {
 
   it("Detects when there are skipped migrations in the list", () => {
     const migrationNames = ["a", "b", "c"];
-    const state: State = [
+    const state: RecordedState = [
       {
         name: "a",
         description: "",
@@ -113,7 +113,7 @@ describe("formatState", () => {
         runAt: 3,
       },
     ];
-    const formattedState = formatState(migrationNames, state);
+    const formattedState = inferState(migrationNames, state);
 
     expect(formattedState).toMatchObject([
       {
@@ -134,7 +134,7 @@ describe("formatState", () => {
 
   it("Detects when there are missing migrations in the list", () => {
     const migrationNames = ["a", "c"];
-    const state: State = [
+    const state: RecordedState = [
       {
         name: "a",
         description: "",
@@ -152,7 +152,7 @@ describe("formatState", () => {
       },
     ];
 
-    const formattedState = formatState(migrationNames, state);
+    const formattedState = inferState(migrationNames, state);
 
     expect(formattedState).toMatchObject([
       {

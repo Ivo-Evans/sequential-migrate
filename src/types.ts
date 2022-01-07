@@ -23,32 +23,32 @@ export enum MIGRATION_STATUS {
   MISSING = "❌ MISSING",
 }
 
-export interface StateItem {
+export interface RecordedStateItem {
   name: string;
   description: string; // todo
   runAt: number;
 }
 
-export interface FormattedStateItem extends StateItem {
+export interface InferredStateItem extends RecordedStateItem {
   status: MIGRATION_STATUS;
 }
 
-export type State = StateItem[];
-export type FormattedState = FormattedStateItem[];
+export type RecordedState = RecordedStateItem[];
+export type InferredState = InferredStateItem[];
 
 export interface StateInterface {
-  get: () => Promise<State>;
-  set: (state: State) => Promise<unknown>;
+  get: () => Promise<RecordedState>;
+  set: (state: RecordedState) => Promise<unknown>;
 }
 
-export type StateModificationIterator = (
-  FormattedState: FormattedState,
+export type migrationStateMachine = (
+  inferredState: InferredState,
   stateInterface: StateInterface,
   to?: string
 ) => Promise<void>;
 
 export type StateModifier = (
-  stateItem: StateItem,
+  stateItem: RecordedStateItem,
   stateInterface: StateInterface
 ) => Promise<void>;
 

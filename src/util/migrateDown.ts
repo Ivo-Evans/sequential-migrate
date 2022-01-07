@@ -1,13 +1,13 @@
-import { MIGRATION_STATUS, StateModificationIterator } from "../types";
+import { MIGRATION_STATUS, migrationStateMachine } from "../types";
 import rollbackMigration from "./rollbackMigration";
 
-const migrateDown: StateModificationIterator = async (
-  formattedState,
+const migrateDown: migrationStateMachine = async (
+  inferredState,
   stateInterface,
   to
 ) => {
-  loop: for (let i = formattedState.length - 1; i >= 0; i--) {
-    const stateItem = formattedState[i];
+  loop: for (let i = inferredState.length - 1; i >= 0; i--) {
+    const stateItem = inferredState[i];
     if (stateItem.name === to) {
       break;
     }

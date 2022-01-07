@@ -1,11 +1,11 @@
-import { StateItem, State, MIGRATION_STATUS, FormattedState } from "../types";
+import { RecordedStateItem, RecordedState, MIGRATION_STATUS, InferredState } from "../types";
 
-const formatState = (
+const inferState = (
   migrationNames: string[],
-  state: State
-): FormattedState => {
+  state: RecordedState
+): InferredState => {
   const stateDictionary = state.reduce(
-    (acc: Record<string, StateItem>, stateItem: StateItem) => {
+    (acc: Record<string, RecordedStateItem>, stateItem: RecordedStateItem) => {
       acc[stateItem.name] = stateItem;
       return acc;
     },
@@ -13,7 +13,7 @@ const formatState = (
   );
 
   let hasARunMigrationBeenEncountered = false;
-  const formattedMigrations = migrationNames
+  const migrationsWithStatus = migrationNames
     .sort((a, b) => b.localeCompare(a)) // reverse the list (also we can't guarantee it arrived sorted)
     .map((migrationName: string) => {
       const stateEntry = stateDictionary[migrationName];
@@ -40,18 +40,18 @@ const formatState = (
       return formattedMigration;
     });
 
-  const formattedMissingEntries = Object.values(stateDictionary).map(
+  const missingStateEntriesWithStatus = Object.values(stateDictionary).map(
     (stateEntry) => {
       return { ...stateEntry, status: MIGRATION_STATUS.MISSING };
     }
   );
 
-  const sortedAndFormattedState = [
-    ...formattedMigrations,
-    ...formattedMissingEntries,
+  const inferredState = [
+    ...migrationsWithStatus,
+    ...missingStateEntriesWithStatus,
   ].sort((a, b) => a.name.localeCompare(b.name));
 
-  return sortedAndFormattedState;
+  return inferredState;
 };
 
-export default formatState;
+export default inferState;

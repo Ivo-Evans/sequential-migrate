@@ -1,4 +1,4 @@
-import { FormattedState, MIGRATION_STATUS, StateInterface } from "../types";
+import { InferredState, MIGRATION_STATUS, StateInterface } from "../types";
 import migrateUp from "./migrateUp";
 import runMigration from "./runMigration";
 
@@ -12,14 +12,14 @@ const stateInterface: StateInterface = {
   set: jest.fn(),
 };
 
-describe("up command", () => {
+describe("migrateUp", () => {
   afterEach(() => {
     mockedRunMigration.mockClear();
     consoleSpy.mockClear();
   });
 
   it("Does nothing when provided with entirely run migrations", async () => {
-    const formattedState: FormattedState = [
+    const formattedState: InferredState = [
       {
         status: MIGRATION_STATUS.RUN,
         name: "a",
@@ -47,7 +47,7 @@ describe("up command", () => {
   });
 
   it("Runs every migration in a set of pending migrations", async () => {
-    const formattedState: FormattedState = [
+    const formattedState: InferredState = [
       {
         status: MIGRATION_STATUS.PENDING,
         name: "a",
@@ -76,7 +76,7 @@ describe("up command", () => {
   });
 
   it("Runs only the pending migrations in a set of run migrations followed by pending migrations", async () => {
-    const formattedState: FormattedState = [
+    const formattedState: InferredState = [
       {
         status: MIGRATION_STATUS.RUN,
         name: "a",
@@ -125,7 +125,7 @@ describe("up command", () => {
   });
 
   it("Aborts when it encounters a missing migration", async () => {
-    const formattedState: FormattedState = [
+    const formattedState: InferredState = [
       {
         status: MIGRATION_STATUS.RUN,
         name: "a",
@@ -162,7 +162,7 @@ describe("up command", () => {
   });
 
   it("Aborts when it encounters a skipped migration", async () => {
-    const formattedState: FormattedState = [
+    const formattedState: InferredState = [
       {
         status: MIGRATION_STATUS.RUN,
         name: "a",
@@ -199,7 +199,7 @@ describe("up command", () => {
   });
 
   it("If there is a target migration, it migrates up and including the target", async () => {
-    const formattedState: FormattedState = [
+    const formattedState: InferredState = [
       {
         status: MIGRATION_STATUS.PENDING,
         name: "a",

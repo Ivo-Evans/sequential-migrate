@@ -1,4 +1,4 @@
-import { StateInterface, StateItem, State } from "../types";
+import { StateInterface, RecordedStateItem, RecordedState } from "../types";
 import runMigration from "./runMigration";
 import dynamicRequire from "./dynamicRequire";
 jest.mock("./dynamicRequire");
@@ -13,7 +13,7 @@ describe("Run migration", () => {
   });
 
   it("requires the migration by its name", async () => {
-    const stateItem: StateItem = {
+    const stateItem: RecordedStateItem = {
       name: "a",
       description: "",
       runAt: 1,
@@ -37,7 +37,7 @@ describe("Run migration", () => {
       up,
     }));
 
-    const stateItem: StateItem = {
+    const stateItem: RecordedStateItem = {
       name: "a",
       description: "",
       runAt: 1,
@@ -56,7 +56,7 @@ describe("Run migration", () => {
   it("calls the state interface's 'set' method with the new state", async () => {
     jest.spyOn(global.Date, "now").mockImplementationOnce(() => 10);
 
-    const oldState: State = [
+    const oldState: RecordedState = [
       {
         name: "b",
         description: "",
@@ -69,7 +69,7 @@ describe("Run migration", () => {
       set,
     };
 
-    const stateItem: StateItem = {
+    const stateItem: RecordedStateItem = {
       name: "a",
       description: "",
       runAt: 1,
