@@ -5,6 +5,7 @@
   "bin": {
     "sequential-migrate": "build/index.js"
   },
+  "types": "./build/types/index.d.ts",
   "scripts": {
     "dev": "npm run build && npm link && chmod +x build/index.js && sequential-migrate",
     "build": "rimraf ./build && tsc",

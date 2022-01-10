@@ -8,6 +8,7 @@ import up from "./bin/up";
 import down from "./bin/down";
 import help from "./bin/help"
 
+
 const { argv } = process;
 
 if (argv.includes(COMMAND.SCAFFOLD)) {

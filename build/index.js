@@ -31,6 +31,6 @@ else if (argv.includes(types_1.COMMAND.DOWN)) {
     (0, down_1.default)(to);
 }
 else {
-    // no need to actually check for the help command because it is the default for unrecoggnised commands
+    // no need to actually check for the help command because it is the default for unrecognised commands
     (0, help_1.default)();
 }

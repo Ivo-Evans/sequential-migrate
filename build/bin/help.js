@@ -8,6 +8,6 @@ const help = () => {
     commands.forEach((command) => {
         console.log(`sequential-migrate ${command}`);
     });
-    console.log("\nPlease see the package documentation for detailed information about how to use these commands");
+    console.log("\nPlease see the package documentation for detailed information about these commands");
 };
 exports.default = help;
