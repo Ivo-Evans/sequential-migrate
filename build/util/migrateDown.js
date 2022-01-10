@@ -14,9 +14,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const types_1 = require("../types");
 const rollbackMigration_1 = __importDefault(require("./rollbackMigration"));
-const migrateDown = (formattedState, stateInterface, to) => __awaiter(void 0, void 0, void 0, function* () {
-    loop: for (let i = formattedState.length - 1; i >= 0; i--) {
-        const stateItem = formattedState[i];
+const migrateDown = (inferredState, stateScript, to) => __awaiter(void 0, void 0, void 0, function* () {
+    loop: for (let i = inferredState.length - 1; i >= 0; i--) {
+        const stateItem = inferredState[i];
         if (stateItem.name === to) {
             break;
         }
@@ -28,7 +28,7 @@ const migrateDown = (formattedState, stateInterface, to) => __awaiter(void 0, vo
                 console.log(`Stopped at ${stateItem.name} because it has status ${stateItem.status}`);
                 break loop;
             case types_1.MIGRATION_STATUS.RUN:
-                yield (0, rollbackMigration_1.default)(stateItem, stateInterface);
+                yield (0, rollbackMigration_1.default)(stateItem, stateScript);
                 break;
             default:
                 throw new Error(`Item at index ${i} of state has an invalid status`);

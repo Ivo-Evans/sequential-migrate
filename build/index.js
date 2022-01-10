@@ -10,6 +10,7 @@ const getStatus_1 = __importDefault(require("./bin/getStatus"));
 const newMigration_1 = __importDefault(require("./bin/newMigration"));
 const up_1 = __importDefault(require("./bin/up"));
 const down_1 = __importDefault(require("./bin/down"));
+const help_1 = __importDefault(require("./bin/help"));
 const { argv } = process;
 if (argv.includes(types_1.COMMAND.SCAFFOLD)) {
     (0, scaffold_1.default)();
@@ -28,4 +29,8 @@ else if (argv.includes(types_1.COMMAND.UP)) {
 else if (argv.includes(types_1.COMMAND.DOWN)) {
     const to = argv[argv.indexOf(types_1.COMMAND.UP) + 1];
     (0, down_1.default)(to);
+}
+else {
+    // no need to actually check for the help command because it is the default for unrecoggnised commands
+    (0, help_1.default)();
 }

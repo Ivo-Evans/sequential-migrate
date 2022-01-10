@@ -6,6 +6,7 @@ import getStatus from "./bin/getStatus";
 import newMigration from "./bin/newMigration";
 import up from "./bin/up";
 import down from "./bin/down";
+import help from "./bin/help"
 
 const { argv } = process;
 
@@ -22,4 +23,7 @@ if (argv.includes(COMMAND.SCAFFOLD)) {
 } else if (argv.includes(COMMAND.DOWN)) {
   const to = argv[argv.indexOf(COMMAND.UP) + 1];
   down(to);
+} else {
+  // no need to actually check for the help command because it is the default for unrecognised commands
+  help()
 }

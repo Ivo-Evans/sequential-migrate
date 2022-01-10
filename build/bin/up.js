@@ -14,13 +14,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const dynamicRequire_1 = __importDefault(require("../util/dynamicRequire"));
 const getConfig_1 = __importDefault(require("../util/getConfig"));
-const getFormattedState_1 = __importDefault(require("../util/getFormattedState"));
+const getInferredState_1 = __importDefault(require("../util/getInferredState"));
 const migrateUp_1 = __importDefault(require("../util/migrateUp"));
 const up = (to) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("🍍   to", to);
     const config = (0, getConfig_1.default)();
-    const formattedState = yield (0, getFormattedState_1.default)();
-    const stateInterface = (0, dynamicRequire_1.default)(config.stateInterface);
-    yield (0, migrateUp_1.default)(formattedState, stateInterface, to);
+    const inferredState = yield (0, getInferredState_1.default)();
+    const stateScript = (0, dynamicRequire_1.default)(config.stateScript);
+    yield (0, migrateUp_1.default)(inferredState, stateScript, to);
 });
 exports.default = up;

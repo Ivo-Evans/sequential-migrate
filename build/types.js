@@ -8,6 +8,7 @@ var COMMAND;
     COMMAND["NEW"] = "new";
     COMMAND["UP"] = "up";
     COMMAND["DOWN"] = "down";
+    COMMAND["HELP"] = "help";
 })(COMMAND = exports.COMMAND || (exports.COMMAND = {}));
 var MIGRATION_STATUS;
 (function (MIGRATION_STATUS) {

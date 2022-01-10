@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const types_1 = require("../types");
-const formatState = (migrationNames, state) => {
+const inferState = (migrationNames, state) => {
     const stateDictionary = state.reduce((acc, stateItem) => {
         acc[stateItem.name] = stateItem;
         return acc;
     }, {});
     let hasARunMigrationBeenEncountered = false;
-    const formattedMigrations = migrationNames
+    const migrationsWithStatus = migrationNames
         .sort((a, b) => b.localeCompare(a)) // reverse the list (also we can't guarantee it arrived sorted)
         .map((migrationName) => {
         const stateEntry = stateDictionary[migrationName];
@@ -27,13 +27,13 @@ const formatState = (migrationNames, state) => {
         }
         return formattedMigration;
     });
-    const formattedMissingEntries = Object.values(stateDictionary).map((stateEntry) => {
+    const missingStateEntriesWithStatus = Object.values(stateDictionary).map((stateEntry) => {
         return Object.assign(Object.assign({}, stateEntry), { status: types_1.MIGRATION_STATUS.MISSING });
     });
-    const sortedAndFormattedState = [
-        ...formattedMigrations,
-        ...formattedMissingEntries,
+    const inferredState = [
+        ...migrationsWithStatus,
+        ...missingStateEntriesWithStatus,
     ].sort((a, b) => a.name.localeCompare(b.name));
-    return sortedAndFormattedState;
+    return inferredState;
 };
-exports.default = formatState;
+exports.default = inferState;

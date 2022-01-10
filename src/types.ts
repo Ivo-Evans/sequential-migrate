@@ -3,7 +3,8 @@ export enum COMMAND {
   STATUS = "status",
   NEW = "new",
   UP = "up",
-  DOWN = "down"
+  DOWN = "down",
+  HELP = "help"
 }
 
 export interface MigrationScript {

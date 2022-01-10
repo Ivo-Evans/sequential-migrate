@@ -13,10 +13,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const dynamicRequire_1 = __importDefault(require("./dynamicRequire"));
-const runMigration = (stateItem, stateInterface) => __awaiter(void 0, void 0, void 0, function* () {
+const runMigration = (stateItem, stateScript) => __awaiter(void 0, void 0, void 0, function* () {
     const migrationScript = (0, dynamicRequire_1.default)(stateItem.name);
     yield migrationScript.up();
-    const state = yield stateInterface.get();
+    const state = yield stateScript.get();
     const newState = [
         ...state,
         {
@@ -25,6 +25,6 @@ const runMigration = (stateItem, stateInterface) => __awaiter(void 0, void 0, vo
             runAt: Date.now(),
         },
     ];
-    yield stateInterface.set(newState);
+    yield stateScript.set(newState);
 });
 exports.default = runMigration;

@@ -8,7 +8,7 @@ const dynamicRequire_1 = __importDefault(require("./dynamicRequire"));
 exports.DEFAULT_CONFIG = {
     migrations: 'migration/migrations',
     newMigrationBuilder: 'migration/newMigrationBuilder',
-    stateInterface: 'migration/stateInterface',
+    stateScript: 'migration/stateScript',
 };
 const getConfig = () => {
     try {
