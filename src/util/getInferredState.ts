@@ -7,7 +7,7 @@ import getConfig from "./getConfig";
 import getState from "./getState";
 import inferState from "./inferState";
 import hasDuplicates from "./hasDuplicates"
-import abortProgram from "./abortProgram";
+import exitSadPath from "./exitSadPath";
 
 const getInferredState = async (): Promise<InferredState> => {
   const config = await getConfig();
@@ -18,7 +18,7 @@ const getInferredState = async (): Promise<InferredState> => {
   const areThereDuplicateMigrations = hasDuplicates(migrationNames.map(migrationName => migrationName.replace(/\.[jt]s$/, '')))
   if (areThereDuplicateMigrations) {
     console.error("Two migration scripts with the same name detected")
-    return abortProgram()
+    return exitSadPath()
   }
   
 
@@ -26,7 +26,7 @@ const getInferredState = async (): Promise<InferredState> => {
   const isThereDuplicateState = hasDuplicates(state.map(stateItem =>stateItem.name))
   if (isThereDuplicateState) {
     console.error("Two state entries with the same name detected")
-    return abortProgram()
+    return exitSadPath()
   }
   const inferredState = inferState(migrationNames, state);
   return inferredState;

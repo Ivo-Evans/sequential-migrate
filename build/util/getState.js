@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const dynamicRequire_1 = __importDefault(require("./dynamicRequire"));
 const getState = (stateInterfacePath) => __awaiter(void 0, void 0, void 0, function* () {
-    const stateScript = (0, dynamicRequire_1.default)(stateInterfacePath);
+    const stateScript = yield (0, dynamicRequire_1.default)(stateInterfacePath);
     const state = yield stateScript.get();
     return state;
 });

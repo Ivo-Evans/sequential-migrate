@@ -1,7 +1,7 @@
-import { EXIT_MESSAGE } from "../types/exitMessage.types";
 import getInferredState from "../util/getInferredState";
 import { MIGRATION_STATUS } from "../types";
-import abortProgram from "../util/abortProgram";
+import exitSadPath from "../util/exitSadPath";
+import exitHappyPath from "../util/exitSadPath";
 
 const ciCheck = async () => {
   const inferredState = await getInferredState();
@@ -13,11 +13,11 @@ const ciCheck = async () => {
   );
 
   if (isThereAMissingMigration || isThereASkippedMigration) {
-    return abortProgram();
+    return exitSadPath();
   }
 
-  console.log(EXIT_MESSAGE.OK);
-  process.exit(0);
+  return (isThereAMissingMigration || isThereASkippedMigration) ? exitSadPath() : exitHappyPath()
+
 };
 
 export default ciCheck;

@@ -17,7 +17,6 @@ const runMigration_1 = __importDefault(require("./runMigration"));
 const migrateUp = (config, inferredState, stateScript, to) => __awaiter(void 0, void 0, void 0, function* () {
     loop: for (let i = 0; i < inferredState.length; i++) {
         const stateItem = inferredState[i];
-        console.log("🍍   stateItem", stateItem);
         switch (stateItem.status) {
             case types_1.MIGRATION_STATUS.RUN:
                 continue;

@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const dynamicRequire_1 = __importDefault(require("./dynamicRequire"));
 const rollbackMigration = (config, stateItem, stateScript) => __awaiter(void 0, void 0, void 0, function* () {
-    const migrationScript = (0, dynamicRequire_1.default)(config.migrations, stateItem.name);
+    const migrationScript = yield (0, dynamicRequire_1.default)(config.migrations, stateItem.name);
     yield migrationScript.down();
     const state = yield stateScript.get();
     const newState = state.filter(({ name }) => name !== stateItem.name);

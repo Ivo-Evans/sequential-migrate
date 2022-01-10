@@ -17,9 +17,9 @@ const getConfig_1 = __importDefault(require("../util/getConfig"));
 const getInferredState_1 = __importDefault(require("../util/getInferredState"));
 const migrateUp_1 = __importDefault(require("../util/migrateUp"));
 const up = (to) => __awaiter(void 0, void 0, void 0, function* () {
-    const config = (0, getConfig_1.default)();
+    const config = yield (0, getConfig_1.default)();
     const inferredState = yield (0, getInferredState_1.default)();
-    const stateScript = (0, dynamicRequire_1.default)(config.stateScript);
+    const stateScript = yield (0, dynamicRequire_1.default)(config.stateScript);
     yield (0, migrateUp_1.default)(config, inferredState, stateScript, to);
 });
 exports.default = up;

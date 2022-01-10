@@ -1,15 +1,22 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const getConfig_1 = __importDefault(require("../util/getConfig"));
 const dynamicRequire_1 = __importDefault(require("../util/dynamicRequire"));
-const newMigration = (name) => {
-    console.log("🍍   newMigration", newMigration);
-    const config = (0, getConfig_1.default)();
-    console.log("🍍   config", config);
-    const migrationBuilder = (0, dynamicRequire_1.default)(config.newMigrationBuilder);
-    migrationBuilder(config.migrations, name);
-};
+const newMigration = (name) => __awaiter(void 0, void 0, void 0, function* () {
+    const config = yield (0, getConfig_1.default)();
+    const migrationBuilder = yield (0, dynamicRequire_1.default)(config.newMigrationBuilder);
+    yield migrationBuilder(config.migrations, name);
+});
 exports.default = newMigration;

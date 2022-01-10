@@ -20,10 +20,8 @@ const inferState_1 = __importDefault(require("./inferState"));
 const hasDuplicates_1 = __importDefault(require("./hasDuplicates"));
 const abortProgram_1 = __importDefault(require("./abortProgram"));
 const getInferredState = () => __awaiter(void 0, void 0, void 0, function* () {
-    const config = (0, getConfig_1.default)();
-    console.log("🍍   path.join(process.cwd(), config.migrations)", path_1.default.join(process.cwd(), config.migrations));
+    const config = yield (0, getConfig_1.default)();
     const migrationNames = fs_1.default.readdirSync(path_1.default.join(process.cwd(), config.migrations));
-    console.log("🍍   migrationNames", migrationNames);
     const areThereDuplicateMigrations = (0, hasDuplicates_1.default)(migrationNames.map(migrationName => migrationName.replace(/\.[jt]s$/, '')));
     if (areThereDuplicateMigrations) {
         console.error("Two migration scripts with the same name detected");

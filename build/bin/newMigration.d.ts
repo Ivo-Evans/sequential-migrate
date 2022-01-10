@@ -1,2 +1,2 @@
-declare const newMigration: (name?: string | undefined) => void;
+declare const newMigration: (name?: string | undefined) => Promise<void>;
 export default newMigration;
