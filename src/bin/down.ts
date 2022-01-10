@@ -8,7 +8,7 @@ const down = async (to?: string) => {
   const inferredState = await getInferredState();
   const stateScript = dynamicRequire(config.stateScript);
 
-  await migrateDown(inferredState, stateScript, to);
+  await migrateDown(config, inferredState, stateScript, to);
 };
 
 export default down;

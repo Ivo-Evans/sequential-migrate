@@ -20,6 +20,6 @@ const down = (to) => __awaiter(void 0, void 0, void 0, function* () {
     const config = (0, getConfig_1.default)();
     const inferredState = yield (0, getInferredState_1.default)();
     const stateScript = (0, dynamicRequire_1.default)(config.stateScript);
-    yield (0, migrateDown_1.default)(inferredState, stateScript, to);
+    yield (0, migrateDown_1.default)(config, inferredState, stateScript, to);
 });
 exports.default = down;

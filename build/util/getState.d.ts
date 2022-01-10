@@ -1,3 +1,3 @@
-import { FilePath } from '../types';
-declare const getState: (stateInterfacePath: FilePath) => Promise<any>;
+import { RecordedState } from '../types';
+declare const getState: (stateInterfacePath: string) => Promise<RecordedState>;
 export default getState;

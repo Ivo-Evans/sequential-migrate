@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const types_1 = require("../types");
+// Another approach to the hashmap would be to combine both list, sort them in reverse, and then iterate through, always checking the item at the next index as well as at this index (but never checking the item at the previous index)
 const inferState = (migrationNames, state) => {
     const stateDictionary = state.reduce((acc, stateItem) => {
         acc[stateItem.name] = stateItem;

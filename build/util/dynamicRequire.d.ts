@@ -1,2 +1,2 @@
-export declare const dynamicRequire: (requirePath: string) => any;
+export declare const dynamicRequire: (...pathSegments: string[]) => any;
 export default dynamicRequire;

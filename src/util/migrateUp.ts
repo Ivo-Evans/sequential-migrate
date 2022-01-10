@@ -2,12 +2,14 @@ import { MIGRATION_STATUS, MigrationStateMachine } from "../types";
 import runMigration from "./runMigration";
 
 const migrateUp: MigrationStateMachine = async (
+  config,
   inferredState,
   stateScript,
   to
 ) => {
   loop: for (let i = 0; i < inferredState.length; i++) {
     const stateItem = inferredState[i];
+    console.log("🍍   stateItem", stateItem);
     switch (stateItem.status) {
       case MIGRATION_STATUS.RUN:
         continue;
@@ -18,7 +20,7 @@ const migrateUp: MigrationStateMachine = async (
         );
         break loop;
       case MIGRATION_STATUS.PENDING:
-        await runMigration(stateItem, stateScript);
+        await runMigration(config, stateItem, stateScript);
         break;
       default:
         throw new Error(`Item at index ${i} of state has invalid status`);

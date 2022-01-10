@@ -19,7 +19,7 @@ var MIGRATION_STATUS;
        */
     MIGRATION_STATUS["SKIPPED"] = "\u274C SKIPPED";
     /**
-     * The mgiration has been reported by {@link StateScript.get}, but can't be found in the migrations folder, indicating that the integrity of the migrations has been compromised.
+     * The migration has been reported by {@link StateScript.get}, but can't be found in the migrations folder, indicating that the integrity of the migrations has been compromised.
      */
     MIGRATION_STATUS["MISSING"] = "\u274C MISSING";
 })(MIGRATION_STATUS = exports.MIGRATION_STATUS || (exports.MIGRATION_STATUS = {}));

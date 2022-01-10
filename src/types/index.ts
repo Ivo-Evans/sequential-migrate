@@ -2,11 +2,9 @@ export { COMMAND } from "./command.types";
 export {
   RuntimeConfiguration,
   ConfigurationFile,
-  FilePath,
-  FolderPath,
 } from "./configurationFile.types";
-export { EXIT_MESSAGE } from "./exitMessage.types"
-export { MigrationBuilder } from "./migrationBuilder.types"
+export { EXIT_MESSAGE } from "./exitMessage.types";
+export { MigrationBuilder } from "./migrationBuilder.types";
 export { MigrationScript } from "./migrationScript.types";
 export { MIGRATION_STATUS } from "./migrationStatus.types";
 export { RecordedStateItem, RecordedState } from "./recordedState.types";
@@ -20,5 +18,3 @@ export { StateModifier } from "./stateModifier.types";
 
 /** @internal */
 export { MigrationStateMachine } from "./migrationStateMachine.types";
-
-

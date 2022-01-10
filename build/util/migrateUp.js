@@ -14,9 +14,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const types_1 = require("../types");
 const runMigration_1 = __importDefault(require("./runMigration"));
-const migrateUp = (inferredState, stateScript, to) => __awaiter(void 0, void 0, void 0, function* () {
+const migrateUp = (config, inferredState, stateScript, to) => __awaiter(void 0, void 0, void 0, function* () {
     loop: for (let i = 0; i < inferredState.length; i++) {
         const stateItem = inferredState[i];
+        console.log("🍍   stateItem", stateItem);
         switch (stateItem.status) {
             case types_1.MIGRATION_STATUS.RUN:
                 continue;
@@ -25,7 +26,7 @@ const migrateUp = (inferredState, stateScript, to) => __awaiter(void 0, void 0, 
                 console.log(`Stopped at ${stateItem.name} because it has status ${stateItem.status}`);
                 break loop;
             case types_1.MIGRATION_STATUS.PENDING:
-                yield (0, runMigration_1.default)(stateItem, stateScript);
+                yield (0, runMigration_1.default)(config, stateItem, stateScript);
                 break;
             default:
                 throw new Error(`Item at index ${i} of state has invalid status`);

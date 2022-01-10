@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.COMMAND = void 0;
 /**
- * These are the commands available to the program
+ * These are the commands available to the user
  */
 var COMMAND;
 (function (COMMAND) {
@@ -42,7 +42,7 @@ var COMMAND;
      *
      * The commands {@link COMMAND.UP | up}, {@link COMMAND.DOWN | down} and {@link COMMAND.STATUS | status} use `stateInterface.js`. `stateInterface.js` should use CommonJS to export an object which meets the {@link StateScript} interface.
      *
-     * The location of all the files created by {@link COMMAND.NEW} can be customised by placing a `.migrationrc.js` at the root of your project. The `.migrationrc.js` should export an object meeting the {@link ConfigurationFile} interface.
+     * The location of all the files created by {@link COMMAND.NEW} can be customised by placing a `.migrationrc.js` at the root of your project. The `.migrationrc.js` should export an object with the {@link ConfigurationFile} interface.
      */
     COMMAND["SCAFFOLD"] = "scaffold";
     /**
@@ -115,9 +115,7 @@ var COMMAND;
     /**
      * A command to use in automated environments like CI/CD pipelines.
      *
-     * Exits with code 1 and logs the word 'abort' if the migration state contains a {@link MIGRATION_STATUS.MISSING | mising} {@link MIGRATION_STATUS.SKIPPED | skipped} migration. If the migration state is OK, it exits with code 0 and logs 'ok'. See {@link EXIT_MESSAGE}.
-     *
-     * If
+     * Exits with code 1 and logs {@link EXIT_MESSAGE.ABORT} if the migration state contains a {@link MIGRATION_STATUS.MISSING | mising} or {@link MIGRATION_STATUS.SKIPPED | skipped} migration. If the migration state is OK, it exits with code 0 and logs {@link EXIT_MESSAGE.OK}.
      *
      */
     COMMAND["CHECK"] = "ci-check";

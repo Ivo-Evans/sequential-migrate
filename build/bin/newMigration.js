@@ -6,7 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const getConfig_1 = __importDefault(require("../util/getConfig"));
 const dynamicRequire_1 = __importDefault(require("../util/dynamicRequire"));
 const newMigration = (name) => {
+    console.log("🍍   newMigration", newMigration);
     const config = (0, getConfig_1.default)();
+    console.log("🍍   config", config);
     const migrationBuilder = (0, dynamicRequire_1.default)(config.newMigrationBuilder);
     migrationBuilder(config.migrations, name);
 };

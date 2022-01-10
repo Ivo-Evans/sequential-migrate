@@ -6,6 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.dynamicRequire = void 0;
 const path_1 = __importDefault(require("path"));
 // don't require from my location, require from the user's location
-const dynamicRequire = (requirePath) => require(path_1.default.join(process.cwd(), requirePath));
+const dynamicRequire = (...pathSegments) => require(path_1.default.join(process.cwd(), ...pathSegments));
 exports.dynamicRequire = dynamicRequire;
 exports.default = exports.dynamicRequire;
