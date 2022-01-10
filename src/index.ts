@@ -25,7 +25,7 @@ const main = async () => {
     const to = argv[argv.indexOf(COMMAND.UP) + 1];
     await up(to);
   } else if (argv.includes(COMMAND.DOWN)) {
-    const to = argv[argv.indexOf(COMMAND.UP) + 1];
+    const to = argv[argv.indexOf(COMMAND.DOWN) + 1];
     await down(to);
   } else if (argv.includes(COMMAND.CHECK)) {
     await ciCheck();
