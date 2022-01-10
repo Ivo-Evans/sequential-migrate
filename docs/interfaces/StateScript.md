@@ -8,38 +8,23 @@ The functions that the sequential-migrate CLI use to understand and set the migr
 
 ### Methods
 
+- [add](StateScript.md#add)
 - [get](StateScript.md#get)
-- [set](StateScript.md#set)
+- [remove](StateScript.md#remove)
 
 ## Methods
 
-### get
+### add
 
-▸ **get**(): `Promise`<[`RecordedState`](../modules.md#recordedstate)\>
+▸ **add**(`state`): `Promise`<`unknown`\>
 
-Will be called with `await` by the sequential-migrate CLI. Returns the saved state.
-
-#### Returns
-
-`Promise`<[`RecordedState`](../modules.md#recordedstate)\>
-
-#### Defined in
-
-[stateScript.types.ts:10](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/stateScript.types.ts#L10)
-
-___
-
-### set
-
-▸ **set**(`state`): `Promise`<`unknown`\>
-
-Will be called with `await` by the sequential-migrate CLI, and given the new state.
+Will be called after a migration takes place with information about the added migration. In practice this is a `push` operation, but you do not need to manage stack logic or ordering.
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `state` | [`RecordedState`](../modules.md#recordedstate) |
+| `state` | [`RecordedStateItem`](RecordedStateItem.md) |
 
 #### Returns
 
@@ -47,4 +32,42 @@ Will be called with `await` by the sequential-migrate CLI, and given the new sta
 
 #### Defined in
 
-[stateScript.types.ts:14](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/stateScript.types.ts#L14)
+[stateScript.types.ts:17](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/stateScript.types.ts#L17)
+
+___
+
+### get
+
+▸ **get**(): `Promise`<[`RecordedState`](../modules.md#recordedstate)\>
+
+Returns the saved state.
+
+#### Returns
+
+`Promise`<[`RecordedState`](../modules.md#recordedstate)\>
+
+#### Defined in
+
+[stateScript.types.ts:12](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/stateScript.types.ts#L12)
+
+___
+
+### remove
+
+▸ **remove**(`state`): `Promise`<`unknown`\>
+
+Will be called after a rollback takes place with information about the removed migration. In practice this is a `pop` operation, but you do not need to manage stack logic or ordering.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `state` | [`RecordedStateItem`](RecordedStateItem.md) |
+
+#### Returns
+
+`Promise`<`unknown`\>
+
+#### Defined in
+
+[stateScript.types.ts:22](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/stateScript.types.ts#L22)

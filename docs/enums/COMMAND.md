@@ -28,7 +28,7 @@ Exits with code 1 and logs [EXIT_MESSAGE.ABORT](EXIT_MESSAGE.md#abort) if the mi
 
 #### Defined in
 
-[command.types.ts:123](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/command.types.ts#L123)
+[command.types.ts:123](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/command.types.ts#L123)
 
 ___
 
@@ -51,7 +51,7 @@ The `up` script halts and exits if it encounters a migration with status [missin
 
 #### Defined in
 
-[command.types.ts:105](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/command.types.ts#L105)
+[command.types.ts:105](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/command.types.ts#L105)
 
 ___
 
@@ -69,7 +69,7 @@ Prints the list of commands
 
 #### Defined in
 
-[command.types.ts:115](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/command.types.ts#L115)
+[command.types.ts:115](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/command.types.ts#L115)
 
 ___
 
@@ -90,7 +90,7 @@ Creates a new blank migration in the `migrations` folder or folder specified in 
 
 #### Defined in
 
-[command.types.ts:71](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/command.types.ts#L71)
+[command.types.ts:71](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/command.types.ts#L71)
 
 ___
 
@@ -106,7 +106,7 @@ sequential-migrate scaffold
 
 No arguments.
 
-Initialises the framework by creating the required files in the `migration` folder at the root of your project.
+Initialises the framework by creating the required files in the `migration` folder at the root of your project. The framework is initialised with a minimal example for Postgres which can be customised to your needs.
 
 ```
 migration/
@@ -131,11 +131,11 @@ Migrations can either files or folders containing `index.js` files. For instance
 
 The commands [up](COMMAND.md#up), [down](COMMAND.md#down) and [status](COMMAND.md#status) use `stateInterface.js`. `stateInterface.js` should use CommonJS to export an object which meets the [StateScript](../interfaces/StateScript.md) interface.
 
-The location of all the files created by [COMMAND.NEW](COMMAND.md#new) can be customised by placing a `.migrationrc.js` at the root of your project. The `.migrationrc.js` should export an object with the [ConfigurationFile](../modules.md#configurationfile) interface.
+The location of all the files created by [COMMAND.NEW](COMMAND.md#new) can be customised after the command has been run by placing a `.migrationrc.js` at the root of your project. The `.migrationrc.js` should export an object with the [ConfigurationFile](../modules.md#configurationfile) interface.
 
 #### Defined in
 
-[command.types.ts:44](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/command.types.ts#L44)
+[command.types.ts:44](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/command.types.ts#L44)
 
 ___
 
@@ -155,7 +155,7 @@ Reads the `migrations` folder and displays a list of migrations along with their
 
 #### Defined in
 
-[command.types.ts:57](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/command.types.ts#L57)
+[command.types.ts:57](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/command.types.ts#L57)
 
 ___
 
@@ -176,8 +176,8 @@ Runs [pending](MIGRATION_STATUS.md#pending) migrations from the most recent [run
 
 The `up` script halts and exits if it encounters a migration with status [missing](MIGRATION_STATUS.md#missing) or [skipped](MIGRATION_STATUS.md#skipped), running all migrations it has already encountered.
 
-The `up` script runs [MigrationScript.up](../interfaces/MigrationScript.md#up) before [StateScript.set](../interfaces/StateScript.md#set). This means that your first migration can be the one that creates the migration table or collection in your database. Just make sure that [StateScript.get](../interfaces/StateScript.md#get) can handle a table that doesn't exist.
+The `up` script runs [MigrationScript.up](../interfaces/MigrationScript.md#up) before [StateScript.add](../interfaces/StateScript.md#add). This means that your first migration can be the one that creates the migration table or collection in your database. Just make sure that [StateScript.get](../interfaces/StateScript.md#get) can handle a table that doesn't exist.
 
 #### Defined in
 
-[command.types.ts:89](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/command.types.ts#L89)
+[command.types.ts:89](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/command.types.ts#L89)

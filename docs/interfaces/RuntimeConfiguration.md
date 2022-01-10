@@ -18,11 +18,11 @@
 
 The place migration files are stored. Migrations can be either a `.js` file, or a folder containing an `index.js` file.
 
-Defaults to migration/migrations/
+Defaults to `migration/migrations/`
 
 #### Defined in
 
-[configurationFile.types.ts:13](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/configurationFile.types.ts#L13)
+[configurationFile.types.ts:6](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/configurationFile.types.ts#L6)
 
 ___
 
@@ -31,11 +31,11 @@ ___
 • **newMigrationBuilder**: `string`
 
 The path that the CLI uses to find a [MigrationBuilder](MigrationBuilder.md)
-Defaults to migration/newMigrationBuilder
+Defaults to `migration/newMigrationBuilder`
 
 #### Defined in
 
-[configurationFile.types.ts:17](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/configurationFile.types.ts#L17)
+[configurationFile.types.ts:10](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/configurationFile.types.ts#L10)
 
 ___
 
@@ -43,8 +43,8 @@ ___
 
 • **stateScript**: `string`
 
-The path that the CLI uses to find a [StateScript](StateScript.md)
+The path that the CLI uses to find a [StateScript](StateScript.md). Defaults to `migration/stateScript.js`
 
 #### Defined in
 
-[configurationFile.types.ts:22](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/configurationFile.types.ts#L22)
+[configurationFile.types.ts:15](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/configurationFile.types.ts#L15)

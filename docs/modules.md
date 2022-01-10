@@ -21,8 +21,6 @@
 ### Type aliases
 
 - [ConfigurationFile](modules.md#configurationfile)
-- [FilePath](modules.md#filepath)
-- [FolderPath](modules.md#folderpath)
 - [RecordedState](modules.md#recordedstate)
 
 ## Type aliases
@@ -31,33 +29,11 @@
 
 Ƭ **ConfigurationFile**: `Partial`<[`RuntimeConfiguration`](interfaces/RuntimeConfiguration.md)\>
 
-#### Defined in
-
-[configurationFile.types.ts:25](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/configurationFile.types.ts#L25)
-
-___
-
-### FilePath
-
-Ƭ **FilePath**: `string`
-
-A path to a file
+Any of the properties from [RuntimeConfiguration](interfaces/RuntimeConfiguration.md)
 
 #### Defined in
 
-[configurationFile.types.ts:2](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/configurationFile.types.ts#L2)
-
-___
-
-### FolderPath
-
-Ƭ **FolderPath**: `string`
-
-A path to a folder
-
-#### Defined in
-
-[configurationFile.types.ts:5](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/configurationFile.types.ts#L5)
+[configurationFile.types.ts:21](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/configurationFile.types.ts#L21)
 
 ___
 
@@ -67,4 +43,4 @@ ___
 
 #### Defined in
 
-[recordedState.types.ts:13](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/recordedState.types.ts#L13)
+[recordedState.types.ts:13](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/recordedState.types.ts#L13)

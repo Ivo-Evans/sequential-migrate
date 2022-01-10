@@ -16,7 +16,7 @@ var COMMAND;
      * No arguments.
      *
      *
-     * Initialises the framework by creating the required files in the `migration` folder at the root of your project.
+     * Initialises the framework by creating the required files in the `migration` folder at the root of your project. The framework is initialised with a minimal example for Postgres which can be customised to your needs.
      *
      * ```
      * migration/
@@ -42,7 +42,7 @@ var COMMAND;
      *
      * The commands {@link COMMAND.UP | up}, {@link COMMAND.DOWN | down} and {@link COMMAND.STATUS | status} use `stateInterface.js`. `stateInterface.js` should use CommonJS to export an object which meets the {@link StateScript} interface.
      *
-     * The location of all the files created by {@link COMMAND.NEW} can be customised by placing a `.migrationrc.js` at the root of your project. The `.migrationrc.js` should export an object with the {@link ConfigurationFile} interface.
+     * The location of all the files created by {@link COMMAND.NEW} can be customised after the command has been run by placing a `.migrationrc.js` at the root of your project. The `.migrationrc.js` should export an object with the {@link ConfigurationFile} interface.
      */
     COMMAND["SCAFFOLD"] = "scaffold";
     /**

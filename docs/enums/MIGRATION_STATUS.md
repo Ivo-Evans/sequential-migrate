@@ -23,7 +23,7 @@ The migration has been reported by [StateScript.get](../interfaces/StateScript.m
 
 #### Defined in
 
-[migrationStatus.types.ts:20](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/migrationStatus.types.ts#L20)
+[migrationStatus.types.ts:20](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/migrationStatus.types.ts#L20)
 
 ___
 
@@ -35,7 +35,7 @@ The migration is present in the migrations folder, but not reported by [StateScr
 
 #### Defined in
 
-[migrationStatus.types.ts:8](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/migrationStatus.types.ts#L8)
+[migrationStatus.types.ts:8](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/migrationStatus.types.ts#L8)
 
 ___
 
@@ -47,7 +47,7 @@ The migration is present in the migrations folder, and is reported by [StateScri
 
 #### Defined in
 
-[migrationStatus.types.ts:12](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/migrationStatus.types.ts#L12)
+[migrationStatus.types.ts:12](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/migrationStatus.types.ts#L12)
 
 ___
 
@@ -59,4 +59,4 @@ The migration is present in the migrations folder, but not reported by [StateScr
 
 #### Defined in
 
-[migrationStatus.types.ts:16](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/migrationStatus.types.ts#L16)
+[migrationStatus.types.ts:16](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/migrationStatus.types.ts#L16)
