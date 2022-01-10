@@ -15,7 +15,7 @@ export enum MIGRATION_STATUS {
    */
   SKIPPED = "❌ SKIPPED",
   /**
-   * The mgiration has been reported by {@link StateScript.get}, but can't be found in the migrations folder, indicating that the integrity of the migrations has been compromised.
+   * The migration has been reported by {@link StateScript.get}, but can't be found in the migrations folder, indicating that the integrity of the migrations has been compromised.
    */
   MISSING = "❌ MISSING",
 }
