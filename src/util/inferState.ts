@@ -1,5 +1,6 @@
 import { RecordedStateItem, RecordedState, MIGRATION_STATUS, InferredState } from "../types";
 
+// Another approach to the hashmap would be to combine both list, sort them in reverse, and then iterate through, always checking the item at the next index as well as at this index (but never checking the item at the previous index)
 const inferState = (
   migrationNames: string[],
   state: RecordedState
