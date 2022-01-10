@@ -2,7 +2,7 @@
 
 # Enumeration: COMMAND
 
-These are the commands available to the program
+These are the commands available to the user
 
 ## Table of contents
 
@@ -26,11 +26,9 @@ A command to use in automated environments like CI/CD pipelines.
 
 Exits with code 1 and logs [EXIT_MESSAGE.ABORT](EXIT_MESSAGE.md#abort) if the migration state contains a [mising](MIGRATION_STATUS.md#missing) or [skipped](MIGRATION_STATUS.md#skipped) migration. If the migration state is OK, it exits with code 0 and logs [EXIT_MESSAGE.OK](EXIT_MESSAGE.md#ok).
 
-If
-
 #### Defined in
 
-[command.types.ts:125](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/command.types.ts#L125)
+[command.types.ts:123](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/command.types.ts#L123)
 
 ___
 
@@ -53,7 +51,7 @@ The `up` script halts and exits if it encounters a migration with status [missin
 
 #### Defined in
 
-[command.types.ts:105](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/command.types.ts#L105)
+[command.types.ts:105](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/command.types.ts#L105)
 
 ___
 
@@ -71,7 +69,7 @@ Prints the list of commands
 
 #### Defined in
 
-[command.types.ts:115](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/command.types.ts#L115)
+[command.types.ts:115](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/command.types.ts#L115)
 
 ___
 
@@ -92,7 +90,7 @@ Creates a new blank migration in the `migrations` folder or folder specified in 
 
 #### Defined in
 
-[command.types.ts:71](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/command.types.ts#L71)
+[command.types.ts:71](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/command.types.ts#L71)
 
 ___
 
@@ -133,11 +131,11 @@ Migrations can either files or folders containing `index.js` files. For instance
 
 The commands [up](COMMAND.md#up), [down](COMMAND.md#down) and [status](COMMAND.md#status) use `stateInterface.js`. `stateInterface.js` should use CommonJS to export an object which meets the [StateScript](../interfaces/StateScript.md) interface.
 
-The location of all the files created by [COMMAND.NEW](COMMAND.md#new) can be customised by placing a `.migrationrc.js` at the root of your project. The `.migrationrc.js` should export an object meeting the [ConfigurationFile](../modules.md#configurationfile) interface.
+The location of all the files created by [COMMAND.NEW](COMMAND.md#new) can be customised by placing a `.migrationrc.js` at the root of your project. The `.migrationrc.js` should export an object with the [ConfigurationFile](../modules.md#configurationfile) interface.
 
 #### Defined in
 
-[command.types.ts:44](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/command.types.ts#L44)
+[command.types.ts:44](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/command.types.ts#L44)
 
 ___
 
@@ -157,7 +155,7 @@ Reads the `migrations` folder and displays a list of migrations along with their
 
 #### Defined in
 
-[command.types.ts:57](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/command.types.ts#L57)
+[command.types.ts:57](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/command.types.ts#L57)
 
 ___
 
@@ -182,4 +180,4 @@ The `up` script runs [MigrationScript.up](../interfaces/MigrationScript.md#up) b
 
 #### Defined in
 
-[command.types.ts:89](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/command.types.ts#L89)
+[command.types.ts:89](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/command.types.ts#L89)

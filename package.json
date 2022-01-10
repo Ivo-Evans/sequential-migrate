@@ -10,7 +10,7 @@
     "dev": "npm run build && npm link && chmod +x build/index.js && sequential-migrate",
     "build": "rimraf ./build && tsc",
     "postbuild": "copyfiles -u 1 src/scaffold/* src/scaffold/**/* build",
-    "docs": "rimraf docs && typedoc src/types/index.ts --excludeInternal",
+    "docs": "rimraf docs && typedoc src/types/index.ts --excludeInternal --categorizeByGroup false",
     "test": "jest --watch"
   },
   "author": "Ivo Evans",

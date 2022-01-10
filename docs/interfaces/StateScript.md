@@ -25,7 +25,7 @@ Will be called with `await` by the sequential-migrate CLI. Returns the saved sta
 
 #### Defined in
 
-[stateScript.types.ts:10](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/stateScript.types.ts#L10)
+[stateScript.types.ts:10](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/stateScript.types.ts#L10)
 
 ___
 
@@ -47,4 +47,4 @@ Will be called with `await` by the sequential-migrate CLI, and given the new sta
 
 #### Defined in
 
-[stateScript.types.ts:14](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/stateScript.types.ts#L14)
+[stateScript.types.ts:14](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/stateScript.types.ts#L14)

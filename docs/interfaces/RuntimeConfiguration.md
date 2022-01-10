@@ -22,7 +22,7 @@ Defaults to migration/migrations/
 
 #### Defined in
 
-[configurationFile.types.ts:13](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/configurationFile.types.ts#L13)
+[configurationFile.types.ts:13](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/configurationFile.types.ts#L13)
 
 ___
 
@@ -35,7 +35,7 @@ Defaults to migration/newMigrationBuilder
 
 #### Defined in
 
-[configurationFile.types.ts:17](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/configurationFile.types.ts#L17)
+[configurationFile.types.ts:17](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/configurationFile.types.ts#L17)
 
 ___
 
@@ -47,4 +47,4 @@ The path that the CLI uses to find a [StateScript](StateScript.md)
 
 #### Defined in
 
-[configurationFile.types.ts:22](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/configurationFile.types.ts#L22)
+[configurationFile.types.ts:22](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/configurationFile.types.ts#L22)

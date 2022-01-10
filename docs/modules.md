@@ -33,7 +33,7 @@
 
 #### Defined in
 
-[configurationFile.types.ts:25](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/configurationFile.types.ts#L25)
+[configurationFile.types.ts:25](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/configurationFile.types.ts#L25)
 
 ___
 
@@ -45,7 +45,7 @@ A path to a file
 
 #### Defined in
 
-[configurationFile.types.ts:2](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/configurationFile.types.ts#L2)
+[configurationFile.types.ts:2](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/configurationFile.types.ts#L2)
 
 ___
 
@@ -57,7 +57,7 @@ A path to a folder
 
 #### Defined in
 
-[configurationFile.types.ts:5](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/configurationFile.types.ts#L5)
+[configurationFile.types.ts:5](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/configurationFile.types.ts#L5)
 
 ___
 
@@ -67,4 +67,4 @@ ___
 
 #### Defined in
 
-[recordedState.types.ts:13](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/recordedState.types.ts#L13)
+[recordedState.types.ts:13](https://github.com/Ivo-Evans/sequential-migrate/blob/9a93920/src/types/recordedState.types.ts#L13)
