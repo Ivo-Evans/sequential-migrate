@@ -13,6 +13,6 @@ Possible scenario:
 You ran a migration which doesn't exist in this branch, and your state interface does not store state in source control.
 
 Suggested fix:
-Checkout the branch you ran this migration in and run its 'down' migration, then checkout this branch and run the up migration to the most recent state.
+Checkout the branch you ran this migration in and run its 'down' migration until the missing migration is removed from the state, then checkout this branch and run the up migration to the most recent state.
 `);
 exports.default = printMissingDebugMessage;
