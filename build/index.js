@@ -48,6 +48,6 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         // no need to actually check for the help command because it is the default for unrecognised commands
         (0, help_1.default)();
     }
-    // process.exit(1)
+    process.exit(0);
 });
 main();

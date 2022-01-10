@@ -17,6 +17,6 @@ const dynamicRequire_1 = __importDefault(require("../util/dynamicRequire"));
 const newMigration = (name) => __awaiter(void 0, void 0, void 0, function* () {
     const config = yield (0, getConfig_1.default)();
     const migrationBuilder = yield (0, dynamicRequire_1.default)(config.newMigrationBuilder);
-    yield migrationBuilder(config.migrations, name);
+    yield migrationBuilder.build(config.migrations, name);
 });
 exports.default = newMigration;
