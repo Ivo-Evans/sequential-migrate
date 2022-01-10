@@ -1,6 +1,6 @@
 {
   "name": "sequential-migrate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Run scripts sequentially, and store a record of the scripts run",
   "bin": {
     "sequential-migrate": "build/index.js"
