@@ -25,7 +25,7 @@ export enum COMMAND {
    * 
    * Migrations in the `migrations` folder should be sorted alphabetically from oldest to newest. For this reason, the default {@link MigrationBuilder} prepends migrations with a timestamp.
    * 
-   * Migrations can either files or folders containing `index.js` files. For instance, this would be valid:
+   * Migrations can be either files or folders containing `index.js` files. For instance, this would be valid:
    * 
    * 
    * ```
