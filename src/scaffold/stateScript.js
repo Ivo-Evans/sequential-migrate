@@ -1,21 +1,44 @@
-/* A state item must conform to the StateItem interface - see docs */
+/**
+ * This is a working example for Postgres, but as long as your code implements the right interface, you can do whatever you like. You can find the full documentation in the docs.
+ */
+
+const db = require("./connection");
 
 // this function shows state to the sequential-migrate cli
 const get = async () => {
-  const state = [] 
-  return state
-}
+  // In this example, we check if the table exists because our first migration creates the table. If we migrate all the way down, and then check the status, the `get` function had better handle it
+  const doesTableExist = !!(
+    await db.query(
+      `SELECT 1 as "column" FROM information_schema.tables WHERE table_name = 'migrations'`
+    )
+  ).rows.length;
 
-// this function receives a new migration from the sequential-migrate cli for you to save wherever you like
+  if (!doesTableExist) {
+    return [];
+  }
+  const stateRaw = await db.query("table migrations");
+  return stateRaw.rows.map((state) => ({
+    name: state.name,
+    description: state.description,
+    runAt: state.run_at,
+  }));
+};
+
+// the sequential-migrate CLI calls this when it wants you to record a successful migration
 const add = async (stateItem) => {
-  return null;
-}
+  const query =
+    "insert into migrations (name, description, run_at) VALUES ($1, $2, $3)";
+  await db.query(query, [
+    stateItem.name,
+    stateItem.description,
+    stateItem.runAt,
+  ]);
+};
 
-// this function receives a rolled-back migration from the sequential-migrate cli to be deleted from your state store.
+// the sequential-migrate CLI calls this when it wants you to delete a migration from your store following a successful rollback
 const remove = async (stateItem) => {
-  return null;
-}
+  const query = "delete from migrations where name = $1";
+  await db.query(query, [stateItem.name]);
+};
 
-
-
-module.exports = { get, set, remove }
+module.exports = { get, add, remove };
