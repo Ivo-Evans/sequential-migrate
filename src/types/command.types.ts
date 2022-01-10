@@ -1,5 +1,5 @@
 /**
- * These are the commands available to the program
+ * These are the commands available to the user
  */
 export enum COMMAND {
   /**
@@ -40,6 +40,7 @@ export enum COMMAND {
    * 
    * The location of all the files created by {@link COMMAND.NEW} can be customised by placing a `.migrationrc.js` at the root of your project. The `.migrationrc.js` should export an object meeting the {@link ConfigurationFile} interface.
    */
+
   SCAFFOLD = "scaffold",
   /**
    * Usage:
@@ -52,6 +53,7 @@ export enum COMMAND {
    * 
    * Reads the `migrations` folder and displays a list of migrations along with their {@link MIGRATION_STATUS}
    */
+
   STATUS = "status",
   /**
    * Usage:
@@ -65,6 +67,7 @@ export enum COMMAND {
    * 
    * Creates a new blank migration in the `migrations` folder or folder specified in a custom {@link RuntimeConfiguration} by calling {@link MigrationBuilder.build}.
    */
+
   NEW = "new",
   /**
    * Usage:
@@ -82,6 +85,7 @@ export enum COMMAND {
    * 
    * The `up` script runs {@link MigrationScript.up} before {@link StateScript.set}. This means that your first migration can be the one that creates the migration table or collection in your database. Just make sure that {@link StateScript.get} can handle a table that doesn't exist.
    */
+
   UP = "up",
     /**
    * Usage:
@@ -97,6 +101,7 @@ export enum COMMAND {
    * 
    * The `up` script halts and exits if it encounters a migration with status {@link MIGRATION_STATUS.MISSING | missing} or {@link MIGRATION_STATUS.SKIPPED | skipped}, running all migrations it has already encountered.
    * */
+
   DOWN = "down",
   /**
    * Usage:
@@ -107,5 +112,13 @@ export enum COMMAND {
    * 
    * Prints the list of commands
    */
-  HELP = "help"
+  HELP = "help",
+
+  /**
+   * A command to use in automated environments like CI/CD pipelines.
+   * 
+   * Exits with code 1 and logs {@link EXIT_MESSAGE.ABORT} if the migration state contains a {@link MIGRATION_STATUS.MISSING | mising} or {@link MIGRATION_STATUS.SKIPPED | skipped} migration. If the migration state is OK, it exits with code 0 and logs {@link EXIT_MESSAGE.OK}. 
+   * 
+   */
+  CHECK = "ci-check"
 }

@@ -5,6 +5,7 @@ export {
   FilePath,
   FolderPath,
 } from "./configurationFile.types";
+export { EXIT_MESSAGE } from "./exitMessage.types"
 export { MigrationBuilder } from "./migrationBuilder.types"
 export { MigrationScript } from "./migrationScript.types";
 export { MIGRATION_STATUS } from "./migrationStatus.types";

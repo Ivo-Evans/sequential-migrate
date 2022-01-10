@@ -107,5 +107,14 @@ export declare enum COMMAND {
      *
      * Prints the list of commands
      */
-    HELP = "help"
+    HELP = "help",
+    /**
+     * A command to use in automated environments like CI/CD pipelines.
+     *
+     * Exits with code 1 and logs the word 'abort' if the migration state contains a {@link MIGRATION_STATUS.MISSING | mising} {@link MIGRATION_STATUS.SKIPPED | skipped} migration. If the migration state is OK, it exits with code 0 and logs 'ok'. See {@link EXIT_MESSAGE}.
+     *
+     * If
+     *
+     */
+    CHECK = "ci-check"
 }

@@ -8,6 +8,7 @@ These are the commands available to the program
 
 ### Enumeration members
 
+- [CHECK](COMMAND.md#check)
 - [DOWN](COMMAND.md#down)
 - [HELP](COMMAND.md#help)
 - [NEW](COMMAND.md#new)
@@ -16,6 +17,22 @@ These are the commands available to the program
 - [UP](COMMAND.md#up)
 
 ## Enumeration members
+
+### CHECK
+
+• **CHECK** = `"ci-check"`
+
+A command to use in automated environments like CI/CD pipelines.
+
+Exits with code 1 and logs [EXIT_MESSAGE.ABORT](EXIT_MESSAGE.md#abort) if the migration state contains a [mising](MIGRATION_STATUS.md#missing) or [skipped](MIGRATION_STATUS.md#skipped) migration. If the migration state is OK, it exits with code 0 and logs [EXIT_MESSAGE.OK](EXIT_MESSAGE.md#ok).
+
+If
+
+#### Defined in
+
+[command.types.ts:125](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/command.types.ts#L125)
+
+___
 
 ### DOWN
 
@@ -36,7 +53,7 @@ The `up` script halts and exits if it encounters a migration with status [missin
 
 #### Defined in
 
-[command.types.ts:100](https://github.com/Ivo-Evans/sequential-migrate/blob/55e7db0/src/types/command.types.ts#L100)
+[command.types.ts:105](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/command.types.ts#L105)
 
 ___
 
@@ -54,7 +71,7 @@ Prints the list of commands
 
 #### Defined in
 
-[command.types.ts:110](https://github.com/Ivo-Evans/sequential-migrate/blob/55e7db0/src/types/command.types.ts#L110)
+[command.types.ts:115](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/command.types.ts#L115)
 
 ___
 
@@ -75,7 +92,7 @@ Creates a new blank migration in the `migrations` folder or folder specified in 
 
 #### Defined in
 
-[command.types.ts:68](https://github.com/Ivo-Evans/sequential-migrate/blob/55e7db0/src/types/command.types.ts#L68)
+[command.types.ts:71](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/command.types.ts#L71)
 
 ___
 
@@ -120,7 +137,7 @@ The location of all the files created by [COMMAND.NEW](COMMAND.md#new) can be cu
 
 #### Defined in
 
-[command.types.ts:43](https://github.com/Ivo-Evans/sequential-migrate/blob/55e7db0/src/types/command.types.ts#L43)
+[command.types.ts:44](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/command.types.ts#L44)
 
 ___
 
@@ -140,7 +157,7 @@ Reads the `migrations` folder and displays a list of migrations along with their
 
 #### Defined in
 
-[command.types.ts:55](https://github.com/Ivo-Evans/sequential-migrate/blob/55e7db0/src/types/command.types.ts#L55)
+[command.types.ts:57](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/command.types.ts#L57)
 
 ___
 
@@ -165,4 +182,4 @@ The `up` script runs [MigrationScript.up](../interfaces/MigrationScript.md#up) b
 
 #### Defined in
 
-[command.types.ts:85](https://github.com/Ivo-Evans/sequential-migrate/blob/55e7db0/src/types/command.types.ts#L85)
+[command.types.ts:89](https://github.com/Ivo-Evans/sequential-migrate/blob/d1c17b9/src/types/command.types.ts#L89)
