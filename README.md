@@ -1,69 +1,23 @@
 # Sequential migrate
 
-## Commands
+This is a database migration tool written in Node.js. The aim is for it to be unopinionated vis-a-vis database of choice, format of migration files and how the program knows which migrations have been run, but still to be easy to use and quick to set up. It does this by exposing files with clear, strongly typed interfaces. 
 
-### Scaffold
-TODO
+## The package at a glance
 
-### migrate:status
+The sequential-migrate CLI analyses the state of your migrations by comparing two bits of information. Firstly, it reads the contents of your `migrations` folder (the path and name of this folder can be customised). Each file or folder inside `migrations` represents one migration, and should export an object which meets the `MigrationScript` interface. If a folder is used, it should contain an `index.js`.
 
-Returns a table with:
+The CLI compares the contents of the `migrations` folder with stored history of migrations. It does this by using the `stateInterface`, a script you should write that has a `get` and `set` method. The stateInterface script should export an object which meets the `StateScript` interface.
 
-- migration index - dynamically generated
-- Name - effectively the ID
-- Status
-  - "Run at ..." - green
-  - "Pending" - yellow
-  - "Skipped - was this added in another branch, but not run in this branch?" - red
-  - "Present in the state, but not in the migrations list - was this run in another branch, but not added in this branch?" - red
+By comparing the migration scripts with the stored states, the sequential-migrate CLI can assign a status to the scripts.
 
-### migrate:new
+When you run the `up` or `down` commands, the program iterates through the list of scripts. For each script, it calls the `up` or `down` function from the `MigrationScript`, and then the appropriate function from the `stateInterface`.
 
-### migrate:up
+Currently, it treats the set of migrations derived from combining the migration files with the stored state as a stack - that is, it only adds to or removes the most recent item. 
 
-You can run `migrate up` to migrate to the most recent migration. You can also provide a specific migration name, e.g. `migrate up 1641484872787-foo`. This will run all pending migrations up to and including `1641484872787-foo`
+## Getting started
 
-### migrate:down
+- install - yarn or npm
+- add to scripts
 
-You can run `migrate down` to rollback all migrations. You can also provide a specific migration name, e.g. `migrate down 1641484872787-foo`. This will roll back all run migrations up to but not including `1641484872787-foo`.
+The first command to run is scaffold. The scaffold docs can take you from there.
 
-## Configuration
-
-Configuration is via a runtime configuration file `.migrationrc.js`. If no `.migrationrc.js` is provided, default values are used.
-
-```js
-module.exports = {
-  migrations: '/path/to/folder', // defaults to migration/migrations/
-  newMigrationBuilder: './path/to/file', // defaults to migration/newMigrationBuilder.js
-  stateInterface: '/path/to/file', // defaults to migration/stateInterface
-}
-```
-
-### migrations
-`migrations` is a folder containing a set of files or folders. Each file/folder should be executable with node - so any folder should contain an index.js file. The following file structure is valid:
-
-```
-.
-├── migrations
-│ ├── 01
-│ │ └── index.js
-│ └── 02.js
-```
-
-When running `migrate:up`, first, the migration in 01/index.js will be run, and then the migration in 02.js will be run.
-
-Each migration script should export an object which fits the `MigrationAPI` interface.
-
-
-### newMigrationBuilder
-
-This is a file which should export a function `build`. 
-
-`build` should take one argument, which is the name the user chooses for the new migration.
-
-`build` should create a file which follows the `MigrationAPI` interface.
-
-
-### stateInterface
-
-This file exports a `StateInterface`. 
