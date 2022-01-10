@@ -1,7 +1,7 @@
-import { MIGRATION_STATUS, migrationStateMachine } from "../types";
+import { MIGRATION_STATUS, MigrationStateMachine } from "../types";
 import rollbackMigration from "./rollbackMigration";
 
-const migrateDown: migrationStateMachine = async (
+const migrateDown: MigrationStateMachine = async (
   inferredState,
   stateScript,
   to

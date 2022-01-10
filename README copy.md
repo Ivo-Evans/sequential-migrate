@@ -43,14 +43,6 @@ module.exports = {
 ### migrations
 `migrations` is a folder containing a set of files or folders. Each file/folder should be executable with node - so any folder should contain an index.js file. The following file structure is valid:
 
-```
-.
-├── migrations
-│ ├── 01
-│ │ └── index.js
-│ └── 02.js
-```
-
 When running `migrate:up`, first, the migration in 01/index.js will be run, and then the migration in 02.js will be run.
 
 Each migration script should export an object which fits the `MigrationAPI` interface.

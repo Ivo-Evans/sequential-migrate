@@ -2,6 +2,12 @@
 
 # Interface: MigrationBuilder
 
+A function which will be called to create a new migration file. This file is found by checking [RuntimeConfiguration.newMigrationBuilder](RuntimeConfiguration.md#newmigrationbuilder).
+
+**`param`** The folder to write the migration to
+
+**`param`** The name entered on the command line, if any, for the new migration
+
 ## Table of contents
 
 ### Methods
@@ -12,13 +18,14 @@
 
 ### build
 
-▸ **build**(`name`): `Promise`<`unknown`\>
+▸ **build**(`migrationsFolder`, `name?`): `Promise`<`unknown`\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `name` | `string` |
+| `migrationsFolder` | `string` |
+| `name?` | `string` |
 
 #### Returns
 
@@ -26,4 +33,4 @@
 
 #### Defined in
 
-types.ts:8
+[migrationBuilder.types.ts:9](https://github.com/Ivo-Evans/sequential-migrate/blob/55e7db0/src/types/migrationBuilder.types.ts#L9)

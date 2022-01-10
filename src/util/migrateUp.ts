@@ -1,7 +1,7 @@
-import { MIGRATION_STATUS, migrationStateMachine } from "../types";
+import { MIGRATION_STATUS, MigrationStateMachine } from "../types";
 import runMigration from "./runMigration";
 
-const migrateUp: migrationStateMachine = async (
+const migrateUp: MigrationStateMachine = async (
   inferredState,
   stateScript,
   to
