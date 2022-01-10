@@ -7,9 +7,9 @@ export const DEFAULT_CONFIG: RuntimeConfiguration = {
   stateScript: 'migration/stateScript',
 }
 
-const getConfig = (): RuntimeConfiguration => {
+const getConfig = async (): Promise<RuntimeConfiguration> => {
   try {
-    const config: ConfigurationFile = dynamicRequire('.migrationrc.js')
+    const config: ConfigurationFile = await dynamicRequire('.migrationrc.js')
     return { ...DEFAULT_CONFIG, ...config }
   } catch (e) {
     console.log('Could not find config file, using defaults...')

@@ -7,18 +7,18 @@ jest.mock("./dynamicRequire", () => ({
   default: jest.fn(),
 }));
 
-describe("getConfig", () => {
-  it("Loads the default config if no file is found", () => {
+describe("getConfig",  () => {
+  it("Loads the default config if no file is found", async () => {
     // @ts-ignore
     dynamicRequire.default = () => {
       throw new Error("")
     }
-    const config = getConfig()
+    const config = await getConfig()
 
     expect(config).toMatchObject(DEFAULT_CONFIG)
   });
 
-  it("Takes all values from the config file if possible", () => {
+  it("Takes all values from the config file if possible", async () => {
 
     const fileConfig: RuntimeConfiguration = {
       migrations: 'm',
@@ -29,12 +29,12 @@ describe("getConfig", () => {
     // @ts-ignore
     dynamicRequire.default = () => fileConfig
 
-    const config = getConfig()
+    const config = await getConfig()
 
     expect(config).toMatchObject(fileConfig)
   });
 
-  it("Merges the config file with the default config to create a complete config if necessary", () => {
+  it("Merges the config file with the default config to create a complete config if necessary", async () => {
     const fileConfig: Partial<RuntimeConfiguration> = {
       migrations: 'm',
       newMigrationBuilder: 'n',
@@ -43,7 +43,7 @@ describe("getConfig", () => {
     // @ts-ignore
     dynamicRequire.default = () => fileConfig
 
-    const config = getConfig()
+    const config = await getConfig()
 
     expect(config).toMatchObject({
       migrations: 'm',

@@ -10,7 +10,7 @@ import hasDuplicates from "./hasDuplicates"
 import abortProgram from "./abortProgram";
 
 const getInferredState = async (): Promise<InferredState> => {
-  const config = getConfig();
+  const config = await getConfig();
 
   const migrationNames = fs.readdirSync(
     path.join(process.cwd(), config.migrations)

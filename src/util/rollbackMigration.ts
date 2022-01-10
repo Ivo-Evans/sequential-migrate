@@ -6,7 +6,7 @@ const rollbackMigration: StateModifier = async (
   stateItem,
   stateScript
 ) => {
-  const migrationScript: MigrationScript = dynamicRequire(
+  const migrationScript = await dynamicRequire(
     config.migrations,
     stateItem.name
   );

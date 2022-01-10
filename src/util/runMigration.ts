@@ -2,7 +2,7 @@ import { StateModifier, MigrationScript } from "../types";
 import dynamicRequire from "./dynamicRequire";
 
 const runMigration: StateModifier = async (config, stateItem, stateScript) => {
-  const migrationScript: MigrationScript = dynamicRequire(
+  const migrationScript: MigrationScript = await dynamicRequire(
     config.migrations,
     stateItem.name
   );
