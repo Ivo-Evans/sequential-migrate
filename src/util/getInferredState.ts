@@ -11,12 +11,10 @@ import abortProgram from "./abortProgram";
 
 const getInferredState = async (): Promise<InferredState> => {
   const config = getConfig();
-  console.log("🍍   path.join(process.cwd(), config.migrations)", path.join(process.cwd(), config.migrations));
 
   const migrationNames = fs.readdirSync(
     path.join(process.cwd(), config.migrations)
   );
-  console.log("🍍   migrationNames", migrationNames);
   const areThereDuplicateMigrations = hasDuplicates(migrationNames.map(migrationName => migrationName.replace(/\.[jt]s$/, '')))
   if (areThereDuplicateMigrations) {
     console.error("Two migration scripts with the same name detected")

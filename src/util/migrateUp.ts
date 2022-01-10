@@ -9,7 +9,6 @@ const migrateUp: MigrationStateMachine = async (
 ) => {
   loop: for (let i = 0; i < inferredState.length; i++) {
     const stateItem = inferredState[i];
-    console.log("🍍   stateItem", stateItem);
     switch (stateItem.status) {
       case MIGRATION_STATUS.RUN:
         continue;
