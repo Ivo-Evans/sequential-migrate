@@ -1,6 +1,7 @@
 import { EXIT_MESSAGE } from "../types/exitMessage.types";
 import getInferredState from "../util/getInferredState";
 import { MIGRATION_STATUS } from "../types";
+import abortProgram from "../util/abortProgram";
 
 const ciCheck = async () => {
   const inferredState = await getInferredState();
@@ -12,8 +13,7 @@ const ciCheck = async () => {
   );
 
   if (isThereAMissingMigration || isThereASkippedMigration) {
-    console.error(EXIT_MESSAGE.ABORT);
-    process.exit(1);
+    return abortProgram();
   }
 
   console.log(EXIT_MESSAGE.OK);
