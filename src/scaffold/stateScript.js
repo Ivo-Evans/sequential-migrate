@@ -6,9 +6,16 @@ const get = async () => {
   return state
 }
 
-// this function receives the new state from the sequential-migrate cli for you to save wherever you like
-const set = async (state) => {
-  return null
+// this function receives a new migration from the sequential-migrate cli for you to save wherever you like
+const add = async (stateItem) => {
+  return null;
 }
 
-module.exports = { get, set }
+// this function receives a rolled-back migration from the sequential-migrate cli to be deleted from your state store.
+const remove = async (stateItem) => {
+  return null;
+}
+
+
+
+module.exports = { get, set, remove }

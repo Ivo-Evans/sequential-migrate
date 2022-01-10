@@ -83,7 +83,7 @@ export enum COMMAND {
    * 
    * The `up` script halts and exits if it encounters a migration with status {@link MIGRATION_STATUS.MISSING | missing} or {@link MIGRATION_STATUS.SKIPPED | skipped}, running all migrations it has already encountered.
    * 
-   * The `up` script runs {@link MigrationScript.up} before {@link StateScript.set}. This means that your first migration can be the one that creates the migration table or collection in your database. Just make sure that {@link StateScript.get} can handle a table that doesn't exist.
+   * The `up` script runs {@link MigrationScript.up} before {@link StateScript.add}. This means that your first migration can be the one that creates the migration table or collection in your database. Just make sure that {@link StateScript.get} can handle a table that doesn't exist.
    */
 
   UP = "up",

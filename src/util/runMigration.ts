@@ -7,16 +7,7 @@ const runMigration: StateModifier = async (config, stateItem, stateScript) => {
     stateItem.name
   );
   await migrationScript.up();
-  const state = await stateScript.get();
-  const newState = [
-    ...state,
-    {
-      name: stateItem.name,
-      description: stateItem.description,
-      runAt: Date.now(),
-    },
-  ];
-  await stateScript.set(newState);
+  await stateScript.add(stateItem);
 };
 
 export default runMigration;

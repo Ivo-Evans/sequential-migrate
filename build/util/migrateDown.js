@@ -15,9 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const types_1 = require("../types");
 const rollbackMigration_1 = __importDefault(require("./rollbackMigration"));
 const migrateDown = (config, inferredState, stateScript, to) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("🍍   to", to);
     loop: for (let i = inferredState.length - 1; i >= 0; i--) {
         const stateItem = inferredState[i];
+        console.log("🍍   stateItem", stateItem.name);
+        console.log("🍍   stateItem.name === to", stateItem.name === to);
         if (stateItem.name === to) {
+            console.log("Breaking, supposedly");
             break;
         }
         switch (stateItem.status) {

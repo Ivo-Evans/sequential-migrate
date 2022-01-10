@@ -16,15 +16,6 @@ const dynamicRequire_1 = __importDefault(require("./dynamicRequire"));
 const runMigration = (config, stateItem, stateScript) => __awaiter(void 0, void 0, void 0, function* () {
     const migrationScript = yield (0, dynamicRequire_1.default)(config.migrations, stateItem.name);
     yield migrationScript.up();
-    const state = yield stateScript.get();
-    const newState = [
-        ...state,
-        {
-            name: stateItem.name,
-            description: stateItem.description,
-            runAt: Date.now(),
-        },
-    ];
-    yield stateScript.set(newState);
+    yield stateScript.add(stateItem);
 });
 exports.default = runMigration;

@@ -38,7 +38,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         yield (0, up_1.default)(to);
     }
     else if (argv.includes(types_1.COMMAND.DOWN)) {
-        const to = argv[argv.indexOf(types_1.COMMAND.UP) + 1];
+        const to = argv[argv.indexOf(types_1.COMMAND.DOWN) + 1];
         yield (0, down_1.default)(to);
     }
     else if (argv.includes(types_1.COMMAND.CHECK)) {

@@ -13,7 +13,7 @@ The CLI compares the contents of the `migrations` folder with stored history of 
 
 By comparing the migration scripts with the stored states, the sequential-migrate CLI can assign a [status](./docs/enums/MIGRATION_STATUS.md) to the scripts.
 
-When you run the `up` or `down` commands, the program iterates through the list of scripts. For each script, it calls the `up` or `down` function from the `MigrationScript`, and then it tells the `stateInterface` about the change by calling [StateScript.set](./docs/interfaces/StateScript.md#set).
+When you run the `up` or `down` commands, the program iterates through the list of scripts. For each script, it calls the `up` or `down` function from the `MigrationScript`, and then it tells the `stateInterface` about the change by calling [StateScript.add](./docs/interfaces/StateScript.md#add) or [StateScript.remove](./docs/interfaces/StateScript.md#remove).
 
 Currently, it treats the set of migrations derived by combining the migration files with the stored state as a stack - that is, it only adds to or removes the most recent item. 
 

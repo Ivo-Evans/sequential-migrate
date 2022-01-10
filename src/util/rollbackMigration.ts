@@ -1,4 +1,4 @@
-import { StateModifier, MigrationScript } from "../types";
+import { StateModifier } from "../types";
 import dynamicRequire from "./dynamicRequire";
 
 const rollbackMigration: StateModifier = async (
@@ -9,11 +9,9 @@ const rollbackMigration: StateModifier = async (
   const migrationScript = await dynamicRequire(
     config.migrations,
     stateItem.name
-  );
+    );
   await migrationScript.down();
-  const state = await stateScript.get();
-  const newState = state.filter(({ name }) => name !== stateItem.name);
-  await stateScript.set(newState);
+  await stateScript.remove(stateItem);
 };
 
 export default rollbackMigration;
