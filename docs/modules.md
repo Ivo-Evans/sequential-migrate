@@ -33,7 +33,7 @@ Any of the properties from [RuntimeConfiguration](interfaces/RuntimeConfiguratio
 
 #### Defined in
 
-[configurationFile.types.ts:21](https://github.com/Ivo-Evans/sequential-migrate/blob/a268585/src/types/configurationFile.types.ts#L21)
+[configurationFile.types.ts:21](https://github.com/Ivo-Evans/sequential-migrate/blob/86b7678/src/types/configurationFile.types.ts#L21)
 
 ___
 
@@ -43,4 +43,4 @@ ___
 
 #### Defined in
 
-[recordedState.types.ts:13](https://github.com/Ivo-Evans/sequential-migrate/blob/a268585/src/types/recordedState.types.ts#L13)
+[recordedState.types.ts:13](https://github.com/Ivo-Evans/sequential-migrate/blob/86b7678/src/types/recordedState.types.ts#L13)

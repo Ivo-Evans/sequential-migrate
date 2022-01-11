@@ -25,7 +25,7 @@ Description of the migration. Can be empty string
 
 #### Defined in
 
-[migrationScript.types.ts:6](https://github.com/Ivo-Evans/sequential-migrate/blob/a268585/src/types/migrationScript.types.ts#L6)
+[migrationScript.types.ts:6](https://github.com/Ivo-Evans/sequential-migrate/blob/86b7678/src/types/migrationScript.types.ts#L6)
 
 ## Methods
 
@@ -41,7 +41,7 @@ Function called with `await` to roll back the migration
 
 #### Defined in
 
-[migrationScript.types.ts:10](https://github.com/Ivo-Evans/sequential-migrate/blob/a268585/src/types/migrationScript.types.ts#L10)
+[migrationScript.types.ts:10](https://github.com/Ivo-Evans/sequential-migrate/blob/86b7678/src/types/migrationScript.types.ts#L10)
 
 ___
 
@@ -57,4 +57,4 @@ Function called with `await` to perform the migration
 
 #### Defined in
 
-[migrationScript.types.ts:8](https://github.com/Ivo-Evans/sequential-migrate/blob/a268585/src/types/migrationScript.types.ts#L8)
+[migrationScript.types.ts:8](https://github.com/Ivo-Evans/sequential-migrate/blob/86b7678/src/types/migrationScript.types.ts#L8)

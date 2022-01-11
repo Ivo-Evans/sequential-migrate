@@ -14,7 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const dynamicRequire_1 = __importDefault(require("./dynamicRequire"));
 const runMigration = (config, stateItem, stateScript) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("🍍   stateItem", stateItem);
     const migrationScript = yield (0, dynamicRequire_1.default)(config.migrations, stateItem.name);
     yield migrationScript.up();
     const runAt = stateItem.runAt === null ? Date.now() : stateItem.runAt;
