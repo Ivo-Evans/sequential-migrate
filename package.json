@@ -2,6 +2,10 @@
   "name": "sequential-migrate",
   "version": "1.0.5",
   "description": "Run scripts sequentially, and store a record of the scripts run",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ivo-Evans/sequential-migrate.git"
+  },
   "bin": {
     "sequential-migrate": "build/index.js"
   },
