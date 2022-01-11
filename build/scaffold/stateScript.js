@@ -16,7 +16,7 @@ const get = async () => {
   if (!doesTableExist) {
     return [];
   }
-  const stateRaw = await db.query("table migrations");
+  const stateRaw = await db.query("table public.migrations");
   return stateRaw.rows.map((state) => ({
     name: state.name,
     description: state.description,
@@ -27,7 +27,7 @@ const get = async () => {
 // the sequential-migrate CLI calls this when it wants you to record a successful migration
 const add = async (stateItem) => {
   const query =
-    "insert into migrations (name, description, run_at) VALUES ($1, $2, $3)";
+    "insert into public.migrations (name, description, run_at) VALUES ($1, $2, $3)";
   await db.query(query, [
     stateItem.name,
     stateItem.description,
@@ -37,7 +37,7 @@ const add = async (stateItem) => {
 
 // the sequential-migrate CLI calls this when it wants you to delete a migration from your store following a successful rollback
 const remove = async (stateItem) => {
-  const query = "delete from migrations where name = $1";
+  const query = "delete from public.migrations where name = $1";
   await db.query(query, [stateItem.name]);
 };
 

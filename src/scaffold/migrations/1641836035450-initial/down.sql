@@ -1,5 +1,5 @@
 BEGIN;
 
-DROP TABLE migrations CASCADE;
+DROP TABLE public.migrations CASCADE;
 
 COMMIT;

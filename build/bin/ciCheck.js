@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const getInferredState_1 = __importDefault(require("../util/getInferredState"));
 const types_1 = require("../types");
 const exitSadPath_1 = __importDefault(require("../util/exitSadPath"));
-const exitSadPath_2 = __importDefault(require("../util/exitSadPath"));
+const exitHappyPath_1 = __importDefault(require("../util/exitHappyPath"));
 const ciCheck = () => __awaiter(void 0, void 0, void 0, function* () {
     const inferredState = yield (0, getInferredState_1.default)();
     const isThereAMissingMigration = inferredState.some(({ status }) => status === types_1.MIGRATION_STATUS.MISSING);
@@ -23,6 +23,6 @@ const ciCheck = () => __awaiter(void 0, void 0, void 0, function* () {
     if (isThereAMissingMigration || isThereASkippedMigration) {
         return (0, exitSadPath_1.default)();
     }
-    return (isThereAMissingMigration || isThereASkippedMigration) ? (0, exitSadPath_1.default)() : (0, exitSadPath_2.default)();
+    return (isThereAMissingMigration || isThereASkippedMigration) ? (0, exitSadPath_1.default)() : (0, exitHappyPath_1.default)();
 });
 exports.default = ciCheck;

@@ -4,19 +4,21 @@
 
 const db = require("./connection");
 
-// this function shows state to the sequential-migrate cli
-const get = async () => {
-  // In this example, we check if the table exists because our first migration creates the table. If we migrate all the way down, and then check the status, the `get` function had better handle it
-  const doesTableExist = !!(
-    await db.query(
+// In this example, we check if the table exists because our first migration creates the table. If we migrate all the way down, the `get` and `delete` functions should understand what's going on.
+const doesTableExist = () =>
+  db
+    .query(
       `SELECT 1 as "column" FROM information_schema.tables WHERE table_name = 'migrations'`
     )
-  ).rows.length;
+    .then((res) => !!res.rows.length);
 
-  if (!doesTableExist) {
+// this function shows state to the sequential-migrate cli
+const get = async () => {
+  if (!(await doesTableExist())) {
     return [];
   }
-  const stateRaw = await db.query("table migrations");
+
+  const stateRaw = await db.query("table public.migrations");
   return stateRaw.rows.map((state) => ({
     name: state.name,
     description: state.description,
@@ -27,7 +29,7 @@ const get = async () => {
 // the sequential-migrate CLI calls this when it wants you to record a successful migration
 const add = async (stateItem) => {
   const query =
-    "insert into migrations (name, description, run_at) VALUES ($1, $2, $3)";
+    "insert into public.migrations (name, description, run_at) VALUES ($1, $2, $3)";
   await db.query(query, [
     stateItem.name,
     stateItem.description,
@@ -37,7 +39,13 @@ const add = async (stateItem) => {
 
 // the sequential-migrate CLI calls this when it wants you to delete a migration from your store following a successful rollback
 const remove = async (stateItem) => {
-  const query = "delete from migrations where name = $1";
+  if (!(await doesTableExist())) {
+    console.log(
+      `\nNot removing ${stateItem.name} from the store because the table does not exist...`
+    );
+    return;
+  }
+  const query = "delete from public.migrations where name = $1";
   await db.query(query, [stateItem.name]);
 };
 
