@@ -1,7 +1,7 @@
 import getInferredState from "../util/getInferredState";
 import { MIGRATION_STATUS } from "../types";
 import exitSadPath from "../util/exitSadPath";
-import exitHappyPath from "../util/exitSadPath";
+import exitHappyPath from "../util/exitHappyPath";
 
 const ciCheck = async () => {
   const inferredState = await getInferredState();
