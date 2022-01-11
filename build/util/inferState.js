@@ -22,7 +22,7 @@ const inferState = (migrationNames, state) => {
             hasARunMigrationBeenEncountered = true;
         }
         const formattedMigration = stateEntry
-            ? Object.assign(Object.assign({}, stateEntry), { status }) : { name: migrationName, description: "", runAt: 0, status };
+            ? Object.assign(Object.assign({}, stateEntry), { status }) : { name: migrationName, description: "", runAt: null, status };
         if (stateEntry) {
             delete stateDictionary[migrationName];
         }

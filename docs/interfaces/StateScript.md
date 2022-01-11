@@ -32,7 +32,7 @@ Will be called after a migration takes place with information about the added mi
 
 #### Defined in
 
-[stateScript.types.ts:17](https://github.com/Ivo-Evans/sequential-migrate/blob/48e63f0/src/types/stateScript.types.ts#L17)
+[stateScript.types.ts:17](https://github.com/Ivo-Evans/sequential-migrate/blob/a268585/src/types/stateScript.types.ts#L17)
 
 ___
 
@@ -48,7 +48,7 @@ Returns the saved state.
 
 #### Defined in
 
-[stateScript.types.ts:12](https://github.com/Ivo-Evans/sequential-migrate/blob/48e63f0/src/types/stateScript.types.ts#L12)
+[stateScript.types.ts:12](https://github.com/Ivo-Evans/sequential-migrate/blob/a268585/src/types/stateScript.types.ts#L12)
 
 ___
 
@@ -70,4 +70,4 @@ Will be called after a rollback takes place with information about the removed m
 
 #### Defined in
 
-[stateScript.types.ts:22](https://github.com/Ivo-Evans/sequential-migrate/blob/48e63f0/src/types/stateScript.types.ts#L22)
+[stateScript.types.ts:22](https://github.com/Ivo-Evans/sequential-migrate/blob/a268585/src/types/stateScript.types.ts#L22)

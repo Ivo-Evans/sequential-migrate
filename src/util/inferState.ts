@@ -32,7 +32,7 @@ const inferState = (
 
       const formattedMigration = stateEntry
         ? { ...stateEntry, status }
-        : { name: migrationName, description: "", runAt: 0, status };
+        : { name: migrationName, description: "", runAt: null, status };
 
       if (stateEntry) {
         delete stateDictionary[migrationName];

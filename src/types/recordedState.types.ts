@@ -7,7 +7,7 @@ export interface RecordedStateItem {
   /** Taken from {@link MigrationScript.desription} */
   description: string;
   /** The JavaScript time at which the migration was run, e.g. `1641818951354` */
-  runAt: number;
+  runAt: number | null;
 }
 
 export type RecordedState = RecordedStateItem[];
