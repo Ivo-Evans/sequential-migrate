@@ -1,6 +1,6 @@
 # Sequential migrate
 
-A database migration tool written in Node.js. `sequential-migrate` is unopinionated about your database of choice, format of migration files and how it knows which migrations have been run, but still does the heavy lifting in organising your migrations. It does this by exposing files with clear, statically typed interfaces. 
+A database migration tool written in Node.js. `sequential-migrate` is unopinionated about your database of choice, format of migration files and how it knows which migrations have been run, but still does the heavy lifting in organising your migrations. It does this by exposing files with clear, statically typed interfaces which it uses to manage your migrations as a stack. 
 
 It has 0 dependencies and [good documentation](./docs/modules.md). Your first point of call when reading the docs should be the [commands](./docs/enums/COMMAND.md).
 

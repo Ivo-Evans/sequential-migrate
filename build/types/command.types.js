@@ -16,7 +16,7 @@ var COMMAND;
      * No arguments.
      *
      *
-     * Initialises the framework by creating the required files in the `migration` folder at the root of your project. The framework is initialised with a minimal example for Postgres which can be customised to your needs.
+     * Initialises the framework by creating the required files in the `migration` folder at the root of your project. The framework is initialised with a minimal example for Postgres which can be customised to your needs. The required files are:
      *
      * ```
      * migration/
@@ -29,7 +29,7 @@ var COMMAND;
      *
      * Migrations in the `migrations` folder should be sorted alphabetically from oldest to newest. For this reason, the default {@link MigrationBuilder} prepends migrations with a timestamp.
      *
-     * Migrations can either files or folders containing `index.js` files. For instance, this would be valid:
+     * Migrations can be either files or folders containing `index.js` files. For instance, this would be valid:
      *
      *
      * ```

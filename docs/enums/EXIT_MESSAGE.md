@@ -19,7 +19,7 @@ Messages logged to the terminal by [COMMAND.CHECK](COMMAND.md#check).
 
 #### Defined in
 
-[exitMessage.types.ts:5](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/exitMessage.types.ts#L5)
+[exitMessage.types.ts:5](https://github.com/Ivo-Evans/sequential-migrate/blob/48e63f0/src/types/exitMessage.types.ts#L5)
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 #### Defined in
 
-[exitMessage.types.ts:6](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/exitMessage.types.ts#L6)
+[exitMessage.types.ts:6](https://github.com/Ivo-Evans/sequential-migrate/blob/48e63f0/src/types/exitMessage.types.ts#L6)

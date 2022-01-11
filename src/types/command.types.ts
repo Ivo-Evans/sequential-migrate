@@ -12,7 +12,7 @@ export enum COMMAND {
    * No arguments.
    * 
    * 
-   * Initialises the framework by creating the required files in the `migration` folder at the root of your project. The framework is initialised with a minimal example for Postgres which can be customised to your needs.
+   * Initialises the framework by creating the required files in the `migration` folder at the root of your project. The framework is initialised with a minimal example for Postgres which can be customised to your needs. The required files are:
    * 
    * ```
    * migration/

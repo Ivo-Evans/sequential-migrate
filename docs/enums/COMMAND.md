@@ -28,7 +28,7 @@ Exits with code 1 and logs [EXIT_MESSAGE.ABORT](EXIT_MESSAGE.md#abort) if the mi
 
 #### Defined in
 
-[command.types.ts:123](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/command.types.ts#L123)
+[command.types.ts:123](https://github.com/Ivo-Evans/sequential-migrate/blob/48e63f0/src/types/command.types.ts#L123)
 
 ___
 
@@ -51,7 +51,7 @@ The `up` script halts and exits if it encounters a migration with status [missin
 
 #### Defined in
 
-[command.types.ts:105](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/command.types.ts#L105)
+[command.types.ts:105](https://github.com/Ivo-Evans/sequential-migrate/blob/48e63f0/src/types/command.types.ts#L105)
 
 ___
 
@@ -69,7 +69,7 @@ Prints the list of commands
 
 #### Defined in
 
-[command.types.ts:115](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/command.types.ts#L115)
+[command.types.ts:115](https://github.com/Ivo-Evans/sequential-migrate/blob/48e63f0/src/types/command.types.ts#L115)
 
 ___
 
@@ -90,7 +90,7 @@ Creates a new blank migration in the `migrations` folder or folder specified in 
 
 #### Defined in
 
-[command.types.ts:71](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/command.types.ts#L71)
+[command.types.ts:71](https://github.com/Ivo-Evans/sequential-migrate/blob/48e63f0/src/types/command.types.ts#L71)
 
 ___
 
@@ -106,7 +106,7 @@ sequential-migrate scaffold
 
 No arguments.
 
-Initialises the framework by creating the required files in the `migration` folder at the root of your project. The framework is initialised with a minimal example for Postgres which can be customised to your needs.
+Initialises the framework by creating the required files in the `migration` folder at the root of your project. The framework is initialised with a minimal example for Postgres which can be customised to your needs. The required files are:
 
 ```
 migration/
@@ -119,7 +119,7 @@ New files and folders in `migrations/` can be created by runing [new](COMMAND.md
 
 Migrations in the `migrations` folder should be sorted alphabetically from oldest to newest. For this reason, the default [MigrationBuilder](../interfaces/MigrationBuilder.md) prepends migrations with a timestamp.
 
-Migrations can either files or folders containing `index.js` files. For instance, this would be valid:
+Migrations can be either files or folders containing `index.js` files. For instance, this would be valid:
 
 ```
 .
@@ -135,7 +135,7 @@ The location of all the files created by [COMMAND.NEW](COMMAND.md#new) can be cu
 
 #### Defined in
 
-[command.types.ts:44](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/command.types.ts#L44)
+[command.types.ts:44](https://github.com/Ivo-Evans/sequential-migrate/blob/48e63f0/src/types/command.types.ts#L44)
 
 ___
 
@@ -155,7 +155,7 @@ Reads the `migrations` folder and displays a list of migrations along with their
 
 #### Defined in
 
-[command.types.ts:57](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/command.types.ts#L57)
+[command.types.ts:57](https://github.com/Ivo-Evans/sequential-migrate/blob/48e63f0/src/types/command.types.ts#L57)
 
 ___
 
@@ -180,4 +180,4 @@ The `up` script runs [MigrationScript.up](../interfaces/MigrationScript.md#up) b
 
 #### Defined in
 
-[command.types.ts:89](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/command.types.ts#L89)
+[command.types.ts:89](https://github.com/Ivo-Evans/sequential-migrate/blob/48e63f0/src/types/command.types.ts#L89)

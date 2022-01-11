@@ -31,4 +31,4 @@ A function which will be called to create a new migration file.
 
 #### Defined in
 
-[migrationBuilder.types.ts:12](https://github.com/Ivo-Evans/sequential-migrate/blob/032c2b7/src/types/migrationBuilder.types.ts#L12)
+[migrationBuilder.types.ts:12](https://github.com/Ivo-Evans/sequential-migrate/blob/48e63f0/src/types/migrationBuilder.types.ts#L12)
