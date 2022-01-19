@@ -28,7 +28,7 @@ Exits with code 1 and logs [EXIT_MESSAGE.ABORT](EXIT_MESSAGE.md#abort) if the mi
 
 #### Defined in
 
-[command.types.ts:123](https://github.com/Ivo-Evans/sequential-migrate/blob/86b7678/src/types/command.types.ts#L123)
+[command.types.ts:114](https://github.com/Ivo-Evans/sequential-migrate/blob/fd5ef48/src/types/command.types.ts#L114)
 
 ___
 
@@ -43,15 +43,11 @@ sequential-migrate down
 sequential-migrate down 1641813498181
 ```
 
-Accepts a migration name as a second optional argument
-
-Rolls back [run](MIGRATION_STATUS.md#run) migrations down to (but not including) the named migration. If no migration is provided, and there are no [mising](MIGRATION_STATUS.md#missing) or [skipped](MIGRATION_STATUS.md#skipped) migrations, rolls back all migrations.
-
-The `up` script halts and exits if it encounters a migration with status [missing](MIGRATION_STATUS.md#missing) or [skipped](MIGRATION_STATUS.md#skipped), running all migrations it has already encountered.
+Accepts a migration name as a second optional argument. Runs the [down](../modules.md#down) library function, passing a migration name, if provided, as the first argument. See that entry for further details.
 
 #### Defined in
 
-[command.types.ts:105](https://github.com/Ivo-Evans/sequential-migrate/blob/86b7678/src/types/command.types.ts#L105)
+[command.types.ts:96](https://github.com/Ivo-Evans/sequential-migrate/blob/fd5ef48/src/types/command.types.ts#L96)
 
 ___
 
@@ -69,7 +65,7 @@ Prints the list of commands
 
 #### Defined in
 
-[command.types.ts:115](https://github.com/Ivo-Evans/sequential-migrate/blob/86b7678/src/types/command.types.ts#L115)
+[command.types.ts:106](https://github.com/Ivo-Evans/sequential-migrate/blob/fd5ef48/src/types/command.types.ts#L106)
 
 ___
 
@@ -90,7 +86,7 @@ Creates a new blank migration in the `migrations` folder or folder specified in 
 
 #### Defined in
 
-[command.types.ts:71](https://github.com/Ivo-Evans/sequential-migrate/blob/86b7678/src/types/command.types.ts#L71)
+[command.types.ts:71](https://github.com/Ivo-Evans/sequential-migrate/blob/fd5ef48/src/types/command.types.ts#L71)
 
 ___
 
@@ -135,7 +131,7 @@ The location of all the files created by [COMMAND.NEW](COMMAND.md#new) can be cu
 
 #### Defined in
 
-[command.types.ts:44](https://github.com/Ivo-Evans/sequential-migrate/blob/86b7678/src/types/command.types.ts#L44)
+[command.types.ts:44](https://github.com/Ivo-Evans/sequential-migrate/blob/fd5ef48/src/types/command.types.ts#L44)
 
 ___
 
@@ -155,7 +151,7 @@ Reads the `migrations` folder and displays a list of migrations along with their
 
 #### Defined in
 
-[command.types.ts:57](https://github.com/Ivo-Evans/sequential-migrate/blob/86b7678/src/types/command.types.ts#L57)
+[command.types.ts:57](https://github.com/Ivo-Evans/sequential-migrate/blob/fd5ef48/src/types/command.types.ts#L57)
 
 ___
 
@@ -170,14 +166,8 @@ sequential-migrate up
 sequential-migrate up 1641813498181
 ```
 
-Accepts a migration name as a second optional argument
-
-Runs [pending](MIGRATION_STATUS.md#pending) migrations from the most recent [run](MIGRATION_STATUS.md#run) migration up to (and including) the named migration, or the most recent migration if no migration name is provided.
-
-The `up` script halts and exits if it encounters a migration with status [missing](MIGRATION_STATUS.md#missing) or [skipped](MIGRATION_STATUS.md#skipped), running all migrations it has already encountered.
-
-The `up` script runs [MigrationScript.up](../interfaces/MigrationScript.md#up) before [StateScript.add](../interfaces/StateScript.md#add). This means that your first migration can be the one that creates the migration table or collection in your database. Just make sure that [StateScript.get](../interfaces/StateScript.md#get) can handle a table that doesn't exist.
+Accepts a migration name as a second optional argument. Runs the [up](../modules.md#up) library function, passing a migration name, if provided, as the first argument. See that entry for further details.
 
 #### Defined in
 
-[command.types.ts:89](https://github.com/Ivo-Evans/sequential-migrate/blob/86b7678/src/types/command.types.ts#L89)
+[command.types.ts:84](https://github.com/Ivo-Evans/sequential-migrate/blob/fd5ef48/src/types/command.types.ts#L84)

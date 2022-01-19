@@ -74,13 +74,8 @@ export declare enum COMMAND {
      * sequential-migrate up 1641813498181
      * ```
      *
-     * Accepts a migration name as a second optional argument
+     * Accepts a migration name as a second optional argument. Runs the {@link up} library function, passing a migration name, if provided, as the first argument. See that entry for further details.
      *
-     * Runs {@link MIGRATION_STATUS.PENDING | pending} migrations from the most recent {@link MIGRATION_STATUS.RUN | run} migration up to (and including) the named migration, or the most recent migration if no migration name is provided.
-     *
-     * The `up` script halts and exits if it encounters a migration with status {@link MIGRATION_STATUS.MISSING | missing} or {@link MIGRATION_STATUS.SKIPPED | skipped}, running all migrations it has already encountered.
-     *
-     * The `up` script runs {@link MigrationScript.up} before {@link StateScript.add}. This means that your first migration can be the one that creates the migration table or collection in your database. Just make sure that {@link StateScript.get} can handle a table that doesn't exist.
      */
     UP = "up",
     /**
@@ -91,11 +86,7 @@ export declare enum COMMAND {
    * sequential-migrate down 1641813498181
    * ```
    *
-   * Accepts a migration name as a second optional argument
-   *
-   * Rolls back {@link MIGRATION_STATUS.RUN | run} migrations down to (but not including) the named migration. If no migration is provided, and there are no {@link MIGRATION_STATUS.MISSING | mising} or {@link MIGRATION_STATUS.SKIPPED | skipped} migrations, rolls back all migrations.
-   *
-   * The `up` script halts and exits if it encounters a migration with status {@link MIGRATION_STATUS.MISSING | missing} or {@link MIGRATION_STATUS.SKIPPED | skipped}, running all migrations it has already encountered.
+   * Accepts a migration name as a second optional argument. Runs the {@link down} library function, passing a migration name, if provided, as the first argument. See that entry for further details.
    * */
     DOWN = "down",
     /**

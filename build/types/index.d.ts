@@ -1,3 +1,4 @@
+export { getStatus, up, down } from "././exportedFunctions.types";
 export { COMMAND } from "./command.types";
 export { RuntimeConfiguration, ConfigurationFile, } from "./configurationFile.types";
 export { EXIT_MESSAGE } from "./exitMessage.types";
@@ -6,7 +7,6 @@ export { MigrationScript } from "./migrationScript.types";
 export { MIGRATION_STATUS } from "./migrationStatus.types";
 export { RecordedStateItem, RecordedState } from "./recordedState.types";
 export { StateScript } from "./stateScript.types";
-/** @internal */
 export { InferredStateItem, InferredState } from "./inferredState.types";
 /** @internal */
 export { StateModifier } from "./stateModifier.types";

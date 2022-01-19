@@ -12,8 +12,7 @@ const getStatus = async () => {
     ({ status }) => status === MIGRATION_STATUS.SKIPPED
   );
 
-  return { state: inferredState, containsMissing, containsSkipped }
-
+  return { state: inferredState, containsMissing, containsSkipped };
 };
 
 export default getStatus;
