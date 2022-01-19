@@ -24,7 +24,7 @@
     "cli": "npm run dev && sequential-migrate ",
     "build": "rimraf ./build && tsc",
     "postbuild": "copyfiles -u 1 src/scaffold/* src/scaffold/**/**/* src/scaffold/**/* build",
-    "docs": "rimraf docs && typedoc src/types/index.ts --excludeInternal",
+    "docs": "rimraf docs && typedoc src/types/index.ts --excludeInternal --defaultCategory miscellaneous --categorizeByGroup false",
     "test": "jest --watch"
   },
   "author": "Ivo Evans",
