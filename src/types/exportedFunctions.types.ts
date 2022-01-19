@@ -1,5 +1,6 @@
 import { InferredState } from ".";
 
+
 /**
  * Runs {@link MIGRATION_STATUS.PENDING | pending} migrations from the most recent {@link MIGRATION_STATUS.RUN | run} migration up to (and including) the migration supplied, or to the most recent migration if none is supplied.
  *

@@ -6,6 +6,11 @@ It has 0 dependencies and [good documentation](./docs/modules.md). You can use i
 
 Note that links in this readme work on GitHub but not on npmjs.com.
 
+- [Sequential migrate](#sequential-migrate)
+  - [The package at a glance](#the-package-at-a-glance)
+  - [Getting started](#getting-started)
+    - [Command line API](#command-line-api)
+    - [Programmatic API](#programmatic-api)
 
 ## The package at a glance
 
@@ -99,6 +104,6 @@ const main = async () => {
 main()
 ```
 
-For documentation for these functions, please refer to the exports section of the docs.
+For documentation for these functions, please refer to the [exports](./docs/modules) section of the docs.
 
 Certain functionality, like scaffolding the project or creating new migration scripts, is limited to the command-line API - but if you have a usecase for exposing these features in JavaScript, let me know and I can add them.
