@@ -12,7 +12,7 @@
   "main": "build/entrypoints/exports/index.js",
   "module": "build/entrypoints/exports/index.js",
   "keywords": ["migration", "migrations", "database", "database-migrations", "migrate"],
-  "types": "./build/types/index.d.ts",
+  "types": "./build/entrypoints/exports/index.d.ts",
   "scripts": {
     "dev": "npm run build && npm link && chmod +x build/entrypoints/commands/index.js",
     "cli": "npm run dev && sequential-migrate ",
