@@ -6,6 +6,7 @@
     "type": "git",
     "url": "https://github.com/Ivo-Evans/sequential-migrate.git"
   },
+  "homepage": "https://ivo-evans.github.io/sequential-migrate/index.html",
   "bin": {
     "sequential-migrate": "build/entrypoints/commands/index.js"
   },
