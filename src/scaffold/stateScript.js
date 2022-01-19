@@ -8,7 +8,7 @@ const db = require("./connection");
 const doesTableExist = () =>
   db
     .query(
-      `SELECT 1 as "column" FROM information_schema.tables WHERE table_name = 'migrations'`
+      `SELECT 1 AS "column" FROM information_schema.tables WHERE table_name = 'migrations'`
     )
     .then((res) => !!res.rows.length);
 
@@ -18,7 +18,7 @@ const get = async () => {
     return [];
   }
 
-  const stateRaw = await db.query("table public.migrations");
+  const stateRaw = await db.query("TABLE public.migrations");
   return stateRaw.rows.map((state) => ({
     name: state.name,
     description: state.description,
@@ -29,7 +29,7 @@ const get = async () => {
 // the sequential-migrate CLI calls this when it wants you to record a successful migration
 const add = async (stateItem) => {
   const query =
-    "insert into public.migrations (name, description, run_at) VALUES ($1, $2, $3)";
+    "INSERT INTO public.migrations (name, description, run_at) VALUES ($1, $2, $3)";
   await db.query(query, [
     stateItem.name,
     stateItem.description,
@@ -45,7 +45,7 @@ const remove = async (stateItem) => {
     );
     return;
   }
-  const query = "delete from public.migrations where name = $1";
+  const query = "DELETE FROM public.migrations WHERE name = $1";
   await db.query(query, [stateItem.name]);
 };
 
