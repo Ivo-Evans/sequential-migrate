@@ -2,9 +2,10 @@
 
 A database migration tool written in Node.js. `sequential-migrate` is unopinionated about your database of choice, format of migration files and how it knows which migrations have been run, but still does the heavy lifting in organising your migrations. It does this by exposing files with clear, statically typed interfaces which it uses to manage your migrations as a stack. 
 
-It has 0 dependencies and [good documentation](https://ivo-evans.github.io/sequential-migrate/). You can use it via the command line or by importing functions in your scripts. PRs are welcome!
+It has 0 dependencies and [good documentation](https://ivo-evans.github.io/sequential-migrate/). You can use it via the command line or by importing functions in your scripts. 
 
-Note that links in this readme work on GitHub but not on npmjs.com.
+PRs welcome!
+
 
 - [Sequential migrate](#sequential-migrate)
   - [The package at a glance](#the-package-at-a-glance)
