@@ -14,6 +14,6 @@ const scaffold = () => {
         console.log(`\n\nWARN: ${folderPath} already exists`);
         return (0, exitSadPath_1.default)();
     }
-    (0, copyDirectory_1.default)(path_1.default.join(__dirname, '..', 'scaffold'), folderPath);
+    (0, copyDirectory_1.default)(path_1.default.join(__dirname, '..', '..', 'scaffold'), folderPath);
 };
 exports.default = scaffold;

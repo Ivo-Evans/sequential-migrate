@@ -12,7 +12,7 @@ const scaffold = () => {
     return exitSadPath()
   }
 
-  copyDirectory(path.join(__dirname, '..', 'scaffold'), folderPath)
+  copyDirectory(path.join(__dirname, '..', '..', 'scaffold'), folderPath)
 }
 
 export default scaffold
