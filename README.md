@@ -104,6 +104,6 @@ const main = async () => {
 main()
 ```
 
-For documentation for these functions, please refer to the [exports](https://ivo-evans.github.io/sequential-migrate/docs/modules.html) section of the docs.
+For documentation for these functions, please refer to the [exports](https://ivo-evans.github.io/sequential-migrate/modules.html) section of the docs.
 
 Certain functionality, like scaffolding the project or creating new migration scripts, is limited to the command-line API - but if you have a usecase for exposing these features in JavaScript, let me know and I can add them.
