@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
-const exitSadPath_1 = __importDefault(require("../util/exitSadPath"));
-const copyDirectory_1 = __importDefault(require("../util/copyDirectory"));
+const exitSadPath_1 = __importDefault(require("../../util/exitSadPath"));
+const copyDirectory_1 = __importDefault(require("../../util/copyDirectory"));
 const scaffold = () => {
     const folderPath = path_1.default.join(process.cwd(), 'migration');
     const doesItAlreadyExist = fs_1.default.existsSync(folderPath);

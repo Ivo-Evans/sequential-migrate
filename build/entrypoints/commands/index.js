@@ -13,14 +13,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const types_1 = require("./types");
-const scaffold_1 = __importDefault(require("./bin/scaffold"));
-const getStatus_1 = __importDefault(require("./bin/getStatus"));
-const newMigration_1 = __importDefault(require("./bin/newMigration"));
-const up_1 = __importDefault(require("./bin/up"));
-const down_1 = __importDefault(require("./bin/down"));
-const help_1 = __importDefault(require("./bin/help"));
-const ciCheck_1 = __importDefault(require("./bin/ciCheck"));
+const types_1 = require("../../types");
+const scaffold_1 = __importDefault(require("./scaffold"));
+const getStatus_1 = __importDefault(require("./getStatus"));
+const newMigration_1 = __importDefault(require("./newMigration"));
+const up_1 = __importDefault(require("../shared/up"));
+const down_1 = __importDefault(require("../shared/down"));
+const help_1 = __importDefault(require("./help"));
+const ciCheck_1 = __importDefault(require("./ciCheck"));
 const { argv } = process;
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     if (argv.includes(types_1.COMMAND.SCAFFOLD)) {

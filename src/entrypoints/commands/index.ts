@@ -1,13 +1,13 @@
 #! /usr/bin/env node
 
-import { COMMAND } from "./types";
-import scaffold from "./bin/scaffold";
-import getStatus from "./bin/getStatus";
-import newMigration from "./bin/newMigration";
-import up from "./bin/up";
-import down from "./bin/down";
-import help from "./bin/help";
-import ciCheck from "./bin/ciCheck";
+import { COMMAND } from "../../types";
+import scaffold from "./scaffold";
+import getStatus from "./getStatus";
+import newMigration from "./newMigration";
+import up from "../shared/up";
+import down from "../shared/down";
+import help from "./help";
+import ciCheck from "./ciCheck";
 
 
 

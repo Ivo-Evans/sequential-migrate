@@ -12,11 +12,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const printState_1 = __importDefault(require("../util/printState"));
-const getInferredState_1 = __importDefault(require("../util/getInferredState"));
-const types_1 = require("../types");
-const printMissingDebugMessage_1 = __importDefault(require("../util/printMissingDebugMessage"));
-const printSkippedDebugMessage_1 = __importDefault(require("../util/printSkippedDebugMessage"));
+const printState_1 = __importDefault(require("../../util/printState"));
+const getInferredState_1 = __importDefault(require("../../util/getInferredState"));
+const types_1 = require("../../types");
+const printMissingDebugMessage_1 = __importDefault(require("../../util/printMissingDebugMessage"));
+const printSkippedDebugMessage_1 = __importDefault(require("../../util/printSkippedDebugMessage"));
 const getStatus = () => __awaiter(void 0, void 0, void 0, function* () {
     const inferredState = yield (0, getInferredState_1.default)();
     (0, printState_1.default)(inferredState);

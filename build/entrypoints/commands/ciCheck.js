@@ -12,14 +12,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const dynamicRequire_1 = __importDefault(require("../util/dynamicRequire"));
-const getConfig_1 = __importDefault(require("../util/getConfig"));
-const getInferredState_1 = __importDefault(require("../util/getInferredState"));
-const migrateUp_1 = __importDefault(require("../util/migrateUp"));
-const up = (to) => __awaiter(void 0, void 0, void 0, function* () {
-    const config = yield (0, getConfig_1.default)();
+const getInferredState_1 = __importDefault(require("../../util/getInferredState"));
+const types_1 = require("../../types");
+const exitSadPath_1 = __importDefault(require("../../util/exitSadPath"));
+const exitHappyPath_1 = __importDefault(require("../../util/exitHappyPath"));
+const ciCheck = () => __awaiter(void 0, void 0, void 0, function* () {
     const inferredState = yield (0, getInferredState_1.default)();
-    const stateScript = yield (0, dynamicRequire_1.default)(config.stateScript);
-    yield (0, migrateUp_1.default)(config, inferredState, stateScript, to);
+    const isThereAMissingMigration = inferredState.some(({ status }) => status === types_1.MIGRATION_STATUS.MISSING);
+    const isThereASkippedMigration = inferredState.some(({ status }) => status === types_1.MIGRATION_STATUS.SKIPPED);
+    if (isThereAMissingMigration || isThereASkippedMigration) {
+        return (0, exitSadPath_1.default)();
+    }
+    return (isThereAMissingMigration || isThereASkippedMigration) ? (0, exitSadPath_1.default)() : (0, exitHappyPath_1.default)();
 });
-exports.default = up;
+exports.default = ciCheck;

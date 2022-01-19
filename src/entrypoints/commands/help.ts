@@ -1,4 +1,4 @@
-import { COMMAND } from "../types";
+import { COMMAND } from "../../types";
 
 const help = () => {
   console.log("\n\nSequential Migrate")

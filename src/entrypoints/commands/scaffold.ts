@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import exitSadPath from '../util/exitSadPath'
-import copyDirectory from '../util/copyDirectory'
+import exitSadPath from '../../util/exitSadPath'
+import copyDirectory from '../../util/copyDirectory'
 
 const scaffold = () => {
   const folderPath = path.join(process.cwd(), 'migration')

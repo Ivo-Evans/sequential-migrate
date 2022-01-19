@@ -1,7 +1,8 @@
 {
   "include": [
     "src/*"
-, "src/types/index.ts"  ],
+, "src/types/index.ts"
+, "src/entrypoints/**/*", ],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 

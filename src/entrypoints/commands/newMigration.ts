@@ -1,5 +1,5 @@
-import getConfig from "../util/getConfig"
-import dynamicRequire from "../util/dynamicRequire"
+import getConfig from "../../util/getConfig"
+import dynamicRequire from "../../util/dynamicRequire"
 
 
 const newMigration = async (name?: string) => {

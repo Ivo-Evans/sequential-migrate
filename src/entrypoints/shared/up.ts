@@ -1,7 +1,7 @@
-import dynamicRequire from "../util/dynamicRequire";
-import getConfig from "../util/getConfig";
-import getInferredState from "../util/getInferredState";
-import migrateUp from "../util/migrateUp";
+import dynamicRequire from "../../util/dynamicRequire";
+import getConfig from "../../util/getConfig";
+import getInferredState from "../../util/getInferredState";
+import migrateUp from "../../util/migrateUp";
 
 const up = async (to?: string) => {
   const config = await getConfig();

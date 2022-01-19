@@ -12,10 +12,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const getInferredState_1 = __importDefault(require("../util/getInferredState"));
-const dynamicRequire_1 = __importDefault(require("../util/dynamicRequire"));
-const getConfig_1 = __importDefault(require("../util/getConfig"));
-const migrateDown_1 = __importDefault(require("../util/migrateDown"));
+const getInferredState_1 = __importDefault(require("../../util/getInferredState"));
+const dynamicRequire_1 = __importDefault(require("../../util/dynamicRequire"));
+const getConfig_1 = __importDefault(require("../../util/getConfig"));
+const migrateDown_1 = __importDefault(require("../../util/migrateDown"));
 const down = (to) => __awaiter(void 0, void 0, void 0, function* () {
     const config = yield (0, getConfig_1.default)();
     const inferredState = yield (0, getInferredState_1.default)();
