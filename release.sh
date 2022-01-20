@@ -19,3 +19,5 @@ npm run docs;
 git add -A;
 git commit -m "pre-release build";
 npm version $1;
+git push origin main;
+npm publish;
