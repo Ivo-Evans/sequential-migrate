@@ -93,13 +93,15 @@ import { getStatus, up, down } from "sequential-migrate";
 const main = async () => {
   const { state, containsMissing, containsSkipped } = await getStatus()
   
-  if (containsMissing || containsSKipped) {
+  if (containsMissing || containsSkipped) {
     throw new Error("Please check migration state manually");
   }
   
-  // migrate to the penultimate migration for no reason, just to demonstrate how up function works
+  // migrate to the penultimate migration to demonstrate up function optional parameter
   const penultimateMigration = state[state.length - 2]
   await up(penultimateMigration.name)
+  
+  process.exit(0)
 }
 
 main()
