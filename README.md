@@ -4,7 +4,7 @@ A database migration tool written in Node.js. `sequential-migrate` is unopiniona
 
 It has 0 dependencies and [good documentation](https://ivo-evans.github.io/sequential-migrate/). You can use it via the command line or by importing functions in your scripts. 
 
-PRs welcome!
+PRs welcome.
 
 
 - [Sequential migrate](#sequential-migrate)
@@ -21,9 +21,9 @@ The package compares the contents of the `migrations` folder with a stored histo
 
 By comparing the migration scripts with the stored states, the sequential-migrate CLI can assign a [status](https://ivo-evans.github.io/sequential-migrate/enums/MIGRATION_STATUS.html) to the scripts.
 
-When you run `up` or `down`, the program iterates through the list of scripts. For each script, it calls the `up` or `down` function from the `MigrationScript`, and then it tells the `stateInterface` about the change by calling [StateScript.add](https://ivo-evans.github.io/sequential-migrate/interfaces/StateScript.html#add) or [StateScript.remove](https://ivo-evans.github.io/sequential-migrate/interfaces/StateScript.html#remove).
+When you run `up` or `down`, the program iterates through the list of scripts. For each script, it calls the `up` or `down` function from the `MigrationScript`, and then it tells the `stateInterface` about the change by calling [StateScript.add](https://ivo-evans.github.io/sequential-migrate/interfaces/StateScript.html#add) or [StateScript.remove](https://ivo-evans.github.io/sequential-migrate/interfaces/StateScript.html#remove). If a migration is missing (the StateScript says it has been run, but the files cannot be found) or skipped, the `up` and `down` scripts will halt and prompt you to fix the problem. 
 
-It treats the set of migrations derived by combining the migration files with the stored state as a stack - that is, it only adds to or removes the most recent item. It encourages you to order migrations by the time they're released, rather than the time they're fixed, and in development to always run migrations in order, even if that means rolling back and then forward again.
+It treats the set of migrations derived by combining the migration files with the stored state as a stack - that is, it only adds to or removes the most recent item. It encourages you to order migrations by the time they're released, rather than the time they're written, and in development to always run migrations in order, even if that means rolling back and then forward again. When you run `up` or `down`, if the sequential-migrate encounters a migration with status [MISSING](https://ivo-evans.github.io/sequential-migrate/enums/MIGRATION_STATUS.html#MISSING) or [SKIPPED](https://ivo-evans.github.io/sequential-migrate/enums/MIGRATION_STATUS.html#SKIPPED), it will halt and ask you to examine the issue.
 
 ## Getting started
 
@@ -37,15 +37,13 @@ or
 yarn add --save-dev sequential-migrate
 ```
 
-Add this to your `package.json`'s `scripts` section:
-
 Run the [scaffold](https://ivo-evans.github.io/sequential-migrate/enums/COMMAND.html#SCAFFOLD) command with 
 
 ```
 npx sequential-migrate scaffold
 ```
 
-From here you have two options, either use the package from the command line, or import functions into your Node scripts:
+From here you have two options, either use the package from the command line, or import functions into your Node scripts. Most use-cases are covered with the command-line API.
 
 ### Command line API
 
