@@ -12,10 +12,6 @@ const ciCheck = async () => {
     ({ status }) => status === MIGRATION_STATUS.SKIPPED
   );
 
-  if (isThereAMissingMigration || isThereASkippedMigration) {
-    return exitSadPath();
-  }
-
   return (isThereAMissingMigration || isThereASkippedMigration) ? exitSadPath() : exitHappyPath()
 
 };
