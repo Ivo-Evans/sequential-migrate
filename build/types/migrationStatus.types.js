@@ -15,7 +15,7 @@ var MIGRATION_STATUS;
      */
     MIGRATION_STATUS["RUN"] = "\u2705 RUN";
     /**
-       * The migration is present in the migrations folder, but not reported by {@link StateScript.get}. However, there is a later migration with {@link MIGRATION_STATUS.RUN}, indicating that the integrity of the migrations has been compromised.
+       * The migration is present in the migrations folder, and not reported by {@link StateScript.get}. However, this migration is not considered {@link MIGRATION_STATUS.PENDING} because there is a later migration with {@link MIGRATION_STATUS.RUN}, indicating that the integrity of the migrations has been compromised.
        */
     MIGRATION_STATUS["SKIPPED"] = "\u274C SKIPPED";
     /**

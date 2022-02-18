@@ -4,7 +4,7 @@
 </a>
 <p>A database migration tool written in Node.js. <code>sequential-migrate</code> is unopinionated about your database of choice, format of migration files and how it knows which migrations have been run, but still does the heavy lifting in organising your migrations. It does this by exposing files with clear, statically typed interfaces which it uses to manage your migrations as a stack. </p>
 <p>It has 0 dependencies and <a href="https://ivo-evans.github.io/sequential-migrate/">good documentation</a>. You can use it via the command line or by importing functions in your scripts. </p>
-<p>PRs welcome!</p>
+<p>PRs welcome.</p>
 <ul>
 <li><a href="#sequential-migrate">Sequential migrate</a><ul>
 <li><a href="#the-package-at-a-glance">The package at a glance</a></li>
@@ -23,8 +23,8 @@
 <p>sequential-migrate analyses the state of your migrations by comparing two things. Firstly, it reads the contents of your <code>migrations</code> folder. Each folder or file inside <code>migrations</code> represents one migration, and should export an object with the <a href="https://ivo-evans.github.io/sequential-migrate/interfaces/MigrationScript.html">MigrationScript</a> interface.</p>
 <p>The package compares the contents of the <code>migrations</code> folder with a stored history of migrations. It does this by using the <code>stateInterface</code>, a script you should write that exports an object with the <a href="https://ivo-evans.github.io/sequential-migrate/interfaces/StateScript.html">StateScript</a> interface.</p>
 <p>By comparing the migration scripts with the stored states, the sequential-migrate CLI can assign a <a href="https://ivo-evans.github.io/sequential-migrate/enums/MIGRATION_STATUS.html">status</a> to the scripts.</p>
-<p>When you run <code>up</code> or <code>down</code>, the program iterates through the list of scripts. For each script, it calls the <code>up</code> or <code>down</code> function from the <code>MigrationScript</code>, and then it tells the <code>stateInterface</code> about the change by calling <a href="https://ivo-evans.github.io/sequential-migrate/interfaces/StateScript.html#add">StateScript.add</a> or <a href="https://ivo-evans.github.io/sequential-migrate/interfaces/StateScript.html#remove">StateScript.remove</a>.</p>
-<p>It treats the set of migrations derived by combining the migration files with the stored state as a stack - that is, it only adds to or removes the most recent item. It encourages you to order migrations by the time they&#39;re released, rather than the time they&#39;re fixed, and in development to always run migrations in order, even if that means rolling back and then forward again.</p>
+<p>When you run <code>up</code> or <code>down</code>, the program iterates through the list of scripts. For each script, it calls the <code>up</code> or <code>down</code> function from the <code>MigrationScript</code>, and then it tells the <code>stateInterface</code> about the change by calling <a href="https://ivo-evans.github.io/sequential-migrate/interfaces/StateScript.html#add">StateScript.add</a> or <a href="https://ivo-evans.github.io/sequential-migrate/interfaces/StateScript.html#remove">StateScript.remove</a>. If a migration is missing (the StateScript says it has been run, but the files cannot be found) or skipped, the <code>up</code> and <code>down</code> scripts will halt and prompt you to fix the problem. </p>
+<p>It treats the set of migrations derived by combining the migration files with the stored state as a stack - that is, it only adds to or removes the most recent item. It encourages you to order migrations by the time they&#39;re released, rather than the time they&#39;re written, and in development to always run migrations in order, even if that means rolling back and then forward again. When you run <code>up</code> or <code>down</code>, if the sequential-migrate encounters a migration with status <a href="https://ivo-evans.github.io/sequential-migrate/enums/MIGRATION_STATUS.html#MISSING">MISSING</a> or <a href="https://ivo-evans.github.io/sequential-migrate/enums/MIGRATION_STATUS.html#SKIPPED">SKIPPED</a>, it will halt and ask you to examine the issue.</p>
 
 <a href="#getting-started" id="getting-started" style="color: inherit; text-decoration: none;">
   <h2>Getting started</h2>
@@ -34,11 +34,10 @@
 <p>or</p>
 <pre><code><span class="hl-0">yarn</span><span class="hl-1"> </span><span class="hl-0">add</span><span class="hl-1"> --</span><span class="hl-0">save</span><span class="hl-1">-</span><span class="hl-0">dev</span><span class="hl-1"> </span><span class="hl-0">sequential</span><span class="hl-1">-</span><span class="hl-0">migrate</span>
 </code></pre>
-<p>Add this to your <code>package.json</code>&#39;s <code>scripts</code> section:</p>
 <p>Run the <a href="https://ivo-evans.github.io/sequential-migrate/enums/COMMAND.html#SCAFFOLD">scaffold</a> command with </p>
 <pre><code><span class="hl-0">npx</span><span class="hl-1"> </span><span class="hl-0">sequential</span><span class="hl-1">-</span><span class="hl-0">migrate</span><span class="hl-1"> </span><span class="hl-0">scaffold</span>
 </code></pre>
-<p>From here you have two options, either use the package from the command line, or import functions into your Node scripts:</p>
+<p>From here you have two options, either use the package from the command line, or import functions into your Node scripts. Most use-cases are covered with the command-line API.</p>
 
 <a href="#command-line-api" id="command-line-api" style="color: inherit; text-decoration: none;">
   <h3>Command line API</h3>
