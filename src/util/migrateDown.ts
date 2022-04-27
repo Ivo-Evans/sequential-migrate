@@ -1,4 +1,5 @@
 import { MIGRATION_STATUS, MigrationStateMachine } from "../types";
+import { LastMigrationResult } from "../types/LastMigrationResult.types";
 import rollbackMigration from "./rollbackMigration";
 
 const migrateDown: MigrationStateMachine = async (
@@ -7,6 +8,7 @@ const migrateDown: MigrationStateMachine = async (
   stateScript,
   to
 ) => {
+  let lastItem: LastMigrationResult;
   loop: for (let i = inferredState.length - 1; i >= 0; i--) {
     const stateItem = inferredState[i];
     if (stateItem.name === to) {
@@ -22,7 +24,7 @@ const migrateDown: MigrationStateMachine = async (
         );
         break loop;
       case MIGRATION_STATUS.RUN:
-        await rollbackMigration(config, stateItem, stateScript);
+        await rollbackMigration(config, stateItem, stateScript, lastItem);
         break;
       default:
         throw new Error(`Item at index ${i} of state has an invalid status`);

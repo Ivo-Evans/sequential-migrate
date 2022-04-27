@@ -1,4 +1,5 @@
 import { MIGRATION_STATUS, MigrationStateMachine } from "../types";
+import { LastMigrationResult } from "../types/LastMigrationResult.types";
 import runMigration from "./runMigration";
 
 const migrateUp: MigrationStateMachine = async (
@@ -7,6 +8,7 @@ const migrateUp: MigrationStateMachine = async (
   stateScript,
   to
 ) => {
+  let lastItem: LastMigrationResult;
   loop: for (let i = 0; i < inferredState.length; i++) {
     const stateItem = inferredState[i];
     switch (stateItem.status) {
@@ -19,7 +21,7 @@ const migrateUp: MigrationStateMachine = async (
         );
         break loop;
       case MIGRATION_STATUS.PENDING:
-        await runMigration(config, stateItem, stateScript);
+        lastItem = await runMigration(config, stateItem, stateScript, lastItem);
         break;
       default:
         throw new Error(`Item at index ${i} of state has invalid status`);
@@ -27,7 +29,6 @@ const migrateUp: MigrationStateMachine = async (
     if (stateItem.name === to) {
       break;
     }
-
   }
 };
 
