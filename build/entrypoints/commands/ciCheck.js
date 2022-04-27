@@ -20,9 +20,6 @@ const ciCheck = () => __awaiter(void 0, void 0, void 0, function* () {
     const inferredState = yield (0, getInferredState_1.default)();
     const isThereAMissingMigration = inferredState.some(({ status }) => status === types_1.MIGRATION_STATUS.MISSING);
     const isThereASkippedMigration = inferredState.some(({ status }) => status === types_1.MIGRATION_STATUS.SKIPPED);
-    if (isThereAMissingMigration || isThereASkippedMigration) {
-        return (0, exitSadPath_1.default)();
-    }
     return (isThereAMissingMigration || isThereASkippedMigration) ? (0, exitSadPath_1.default)() : (0, exitHappyPath_1.default)();
 });
 exports.default = ciCheck;

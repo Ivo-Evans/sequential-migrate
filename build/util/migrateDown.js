@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const types_1 = require("../types");
 const rollbackMigration_1 = __importDefault(require("./rollbackMigration"));
 const migrateDown = (config, inferredState, stateScript, to) => __awaiter(void 0, void 0, void 0, function* () {
+    let lastItem;
     loop: for (let i = inferredState.length - 1; i >= 0; i--) {
         const stateItem = inferredState[i];
         if (stateItem.name === to) {
@@ -28,7 +29,7 @@ const migrateDown = (config, inferredState, stateScript, to) => __awaiter(void 0
                 console.log(`Stopped at ${stateItem.name} because it has status ${stateItem.status}`);
                 break loop;
             case types_1.MIGRATION_STATUS.RUN:
-                yield (0, rollbackMigration_1.default)(config, stateItem, stateScript);
+                yield (0, rollbackMigration_1.default)(config, stateItem, stateScript, lastItem);
                 break;
             default:
                 throw new Error(`Item at index ${i} of state has an invalid status`);

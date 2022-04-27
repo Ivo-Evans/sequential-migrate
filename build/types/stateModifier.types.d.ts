@@ -1,4 +1,5 @@
 import { RuntimeConfiguration } from ".";
 import { RecordedStateItem } from "./recordedState.types";
 import { StateScript } from "./stateScript.types";
-export declare type StateModifier = (config: RuntimeConfiguration, stateItem: RecordedStateItem, stateScript: StateScript) => Promise<void>;
+import { LastMigrationResult } from "./LastMigrationResult.types";
+export declare type StateModifier = (config: RuntimeConfiguration, stateItem: RecordedStateItem, stateScript: StateScript, lastItem: LastMigrationResult) => Promise<LastMigrationResult>;
